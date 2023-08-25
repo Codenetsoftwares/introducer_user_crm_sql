@@ -116,13 +116,13 @@ const Transaction = () => {
             <div className="row">
               <h4 className="col fs-6 font-weight-bold">Date</h4>
               <h4 className="col fs-6 font-weight-bold">Amount</h4>
-              <h4 className="col fs-6 font-weight-bold">Transaction Id</h4>
-              <h4 className="col fs-6 font-weight-bold">Gateway</h4>
+              {/* <h4 className="col fs-6 font-weight-bold">Transaction Id</h4>
+              <h4 className="col fs-6 font-weight-bold">Gateway</h4> */}
               {/* <h4 className="col fs-6">CreatedBy</h4> */}
               <h4 className="col fs-6 font-weight-bold">Transaction Type</h4>
-              <h4 className="col fs-6 font-weight-bold">User Id</h4>
+              {/* <h4 className="col fs-6 font-weight-bold">User Id</h4>
               <h4 className="col fs-6 font-weight-bold">Bank</h4>
-              <h4 className="col fs-6 font-weight-bold">Website</h4>
+              <h4 className="col fs-6 font-weight-bold">Website</h4> */}
             </div>
           </div>
         </div>
@@ -156,17 +156,17 @@ const Transaction = () => {
                         <p className="col fs-6 font-weight-bold">
                           ₹&nbsp;{data.amount}
                         </p>
-                        <p className="col fs-6 text-break font-weight-bold">
+                        {/* <p className="col fs-6 text-break font-weight-bold">
                           {data.transactionID}
                         </p>
                         <p className="col fs-6 font-weight-bold">
                           {data.paymentMethod}
-                        </p>
+                        </p> */}
                         {/* <p className="col fs-6 text-break">{data.subAdminId}</p> */}
                         <p className="col fs-6 font-weight-bold">
                           {data.transactionType}
                         </p>
-                        <p className="col fs-6 font-weight-bold">
+                        {/* <p className="col fs-6 font-weight-bold">
                           {data.userId}
                         </p>
                         <p className="col fs-6 font-weight-bold">
@@ -174,7 +174,7 @@ const Transaction = () => {
                         </p>
                         <p className="col fs-6 font-weight-bold">
                           {data.websiteName}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                   </div>
@@ -214,17 +214,17 @@ const Transaction = () => {
                         <p className="col fs-6 font-weight-bold">
                           ₹&nbsp;{data.amount}
                         </p>
-                        <p className="col fs-6 text-break font-weight-bold">
+                        {/* <p className="col fs-6 text-break font-weight-bold">
                           {data.transactionID}
                         </p>
                         <p className="col fs-6 font-weight-bold">
                           {data.paymentMethod}
-                        </p>
+                        </p> */}
                         {/* <p className="col fs-6 text-break">{data.subAdminId}</p> */}
                         <p className="col fs-6 font-weight-bold">
                           {data.transactionType}
                         </p>
-                        <p className="col fs-6 font-weight-bold">
+                        {/* <p className="col fs-6 font-weight-bold">
                           {data.userId}
                         </p>
                         <p className="col fs-6 font-weight-bold">
@@ -232,7 +232,7 @@ const Transaction = () => {
                         </p>
                         <p className="col fs-6 font-weight-bold">
                           {data.websiteName}
-                        </p>
+                        </p> */}
                       </div>
                     </div>
                   </div>

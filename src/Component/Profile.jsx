@@ -123,13 +123,13 @@ const Profile = () => {
                       Logout
                     </button>
 
-                    <button
+                    {/* <button
                       type="button"
                       className="btn btn-outline-primary ms-1"
                       onClick={handeleditprofile}
                     >
                       <small>Edit Profile</small>
-                    </button>
+                    </button> */}
 
                   </div>
                 </div>
@@ -145,7 +145,7 @@ const Profile = () => {
                       {profiledata.lastname}{" "}
                     </h6>
                     <br />
-                    <h6>User Id:&nbsp;{profiledata.userId}</h6>
+                    <h6>User Id:&nbsp;{profiledata.introducerId}</h6>
                     <br />
                     <div className="d-flex flex-row">
                       <h6>
@@ -174,13 +174,13 @@ const Profile = () => {
                       </div>
                     ) : null}
                     <br />
-                    <h6>Contact Info: &nbsp;{profiledata.contactNumber}</h6>
+                    <h6>wallet: &nbsp;{profiledata.wallet}</h6>
                     <br />
-                    <h6>Introduced By:</h6>
+                    <h6>Role: &nbsp;{profiledata.role}</h6>
                   </p>
                 </div>
               </div>
-              <div className="row">
+              {/* <div className="row">
                 <div className="col-md-6">
                   <div className="card mb-4 mb-md-0">
                     <div className="card-body">
@@ -243,7 +243,7 @@ const Profile = () => {
                     </div>
                   </div>
                 </div>
-              </div>
+              </div> */}
             </div>
           </div>
         </div>
