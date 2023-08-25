@@ -17,7 +17,7 @@ const Transaction = () => {
 
   useEffect(() => {
     AccountsService.getprofile(auth.user, id).then((res) =>
-      setProfiledata(res.data.transactionDetail)
+      setProfiledata(res.data.creditTransaction)
     );
   }, [auth, id]);
   console.log(profiledata);
@@ -148,10 +148,10 @@ const Transaction = () => {
                     <div className="card-body">
                       <div className="row">
                         <p className="col fs-6 font-weight-bold">
-                          {new Date(data.createdAt).toLocaleString("default", {
+                          {new Date(data.date).toLocaleString("default", {
                             month: "long",
                           })}{" "}
-                          {new Date(data.createdAt).getDate()}
+                          {new Date(data.date).getDate()}
                         </p>
                         <p className="col fs-6 font-weight-bold">
                           ₹&nbsp;{data.amount}
@@ -206,10 +206,10 @@ const Transaction = () => {
                     <div className="card-body">
                       <div className="row">
                         <p className="col fs-6 font-weight-bold">
-                          {new Date(data.createdAt).toLocaleString("default", {
+                          {new Date(data.date).toLocaleString("default", {
                             month: "long",
                           })}{" "}
-                          {new Date(data.createdAt).getDate()}
+                          {new Date(data.date).getDate()}
                         </p>
                         <p className="col fs-6 font-weight-bold">
                           ₹&nbsp;{data.amount}
