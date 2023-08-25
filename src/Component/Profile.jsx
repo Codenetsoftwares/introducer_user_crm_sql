@@ -145,10 +145,10 @@ const Profile = () => {
                       {profiledata.lastname}{" "}
                     </h6>
                     <br />
-                    <h6>User Id:&nbsp;{profiledata.introducerId}</h6>
+                    <h6>Introducer Id:&nbsp;{profiledata.introducerId}</h6>
                     <br />
                     <div className="d-flex flex-row">
-                      <h6>
+                      {/* <h6>
                         Payment Info:&nbsp;
                         <button
                           style={{
@@ -161,10 +161,11 @@ const Profile = () => {
                         >
                           Click Here
                         </button>
-                      </h6>
+                      </h6> */}
+                      <h6>Introducer Percentage:&nbsp;{profiledata.introducerPercentage}</h6>
                     </div>
                     <br />
-                    {profiledata.webSiteDetail &&
+                    {/* {profiledata.webSiteDetail &&
                       profiledata.webSiteDetail.length > 0 ? (
                       <div className="d-flex flex-row">
                         <h6>
@@ -172,8 +173,8 @@ const Profile = () => {
                           {`${profiledata.webSiteDetail}`}
                         </h6>
                       </div>
-                    ) : null}
-                    <br />
+                    ) : null} */}
+                    {/* <br /> */}
                     <h6>wallet: &nbsp;{profiledata.wallet}</h6>
                     <br />
                     <h6>Role: &nbsp;{profiledata.role}</h6>
