@@ -117,21 +117,7 @@ const Transaction = () => {
             backgroundImage:
               "linear-gradient(90deg, rgba(60,251,165,1) 0%, rgba(171,246,241,1) 50%, rgba(60,251,165,1) 100%)",
           }}
-        >
-          <div className="card-body">
-            <div className="row">
-              <h4 className="col fs-6 font-weight-bold">Date</h4>
-              <h4 className="col fs-6 font-weight-bold">Amount</h4>
-              <h4 className="col fs-6 font-weight-bold">Transaction Id</h4>
-              <h4 className="col fs-6 font-weight-bold">Gateway</h4>
-              {/* <h4 className="col fs-6">CreatedBy</h4> */}
-              <h4 className="col fs-6 font-weight-bold">Transaction Type</h4>
-              <h4 className="col fs-6 font-weight-bold">User Id</h4>
-              <h4 className="col fs-6 font-weight-bold">Bank</h4>
-              <h4 className="col fs-6 font-weight-bold">Website</h4>
-            </div>
-          </div>
-        </div>
+        ></div>
         {toggle ? (
           <div className=" container mt-5">
             <div
