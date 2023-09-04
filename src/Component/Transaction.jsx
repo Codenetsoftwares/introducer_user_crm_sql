@@ -5,22 +5,54 @@ import { Link, useNavigate } from "react-router-dom";
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import moment from "moment";
+import TransactionService from "../Services/TransactionService";
 
 const Transaction = () => {
   const auth = useAuth();
   const id = auth.user.id;
   const [toggle, setToggle] = useState(true);
   const [documentView, setDocumentView] = useState([]);
+  const [subAdmin, setSubAdmin] = useState("");
+  const [subAdminlist, setSubAdminlist] = useState([]);
   const [documentFilter, setDocumentFilter] = useState([]);
   const [startDatevalue, SetStartDatesetValue] = useState(new Date());
   const [endDatevalue, setEndDateValue] = useState(new Date());
   const [accountData, setAccountData] = useState([]);
+
+  const test = ["subAdminName"];
+
+  const handleClick = (key, value) => {
+    let nArr = [...documentView];
+    // const originalData = [...documentView];
+
+    if (test.includes(key)) {
+      nArr = nArr.filter((item) => item[key] === value);
+    }
+    // if (nArr.length === 0) {
+    //   nArr = originalData;
+    // }
+    setDocumentView(nArr);
+  };
 
   useEffect(() => {
     AccountsService.getprofile(auth.user, id).then(
       (res) => (setDocumentView(res.data), setAccountData(res.data))
     );
   }, [auth, id]);
+
+  // useEffect(() => {
+  //   if (auth.user) {
+  //     TransactionService.subAdminList(auth.user).then((res) => {
+  //       setSubAdminlist(res.data);
+  //     });
+  //   }
+  // }, [auth]);
+
+  const handleSubAdmin = (e) => {
+    const value = e.target.value;
+    setSubAdmin(value);
+    handleClick("subAdminName", value);
+  };
 
   const handelDate = () => {
     const sdate = moment(startDatevalue, "DD-MM-YYYY HH:mm").toDate();
@@ -67,6 +99,30 @@ const Transaction = () => {
                   </li> */}
         </ul>
       </nav>
+      <div className="d-flex justify-content-center">
+        <h6 className="fw-bold text-nowrap pt-2"> SubAdminlist</h6>
+        <select
+          className="form-control mx-3 w-25"
+          value={subAdmin || ""}
+          autoComplete="off"
+          onChange={handleSubAdmin}
+          style={{
+            boxShadow: " 17px 15px 27px -9px rgba(0,0,0,0.41)",
+            border: "0.5px solid black",
+            borderRadius: "6px",
+          }}
+          required
+        >
+          <option selected>Select subAdmin</option>
+          {subAdminlist.map((data) => {
+            return (
+              <option key={data._id} value={data.firstname}>
+                {data.firstname}
+              </option>
+            );
+          })}
+        </select>
+      </div>
       <div className="d-flex pt-2 justify-content-center">
         <h6 className="fw-bold text-nowrap pt-2"> Start Date</h6>
         <Datetime
