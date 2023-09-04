@@ -113,16 +113,13 @@ const Transaction = () => {
           }}
         >
           <div className="card-body">
-            <div className="row">
-              <h4 className="col fs-6 font-weight-bold">Date</h4>
-              <h4 className="col fs-6 font-weight-bold">Amount</h4>
-              {/* <h4 className="col fs-6 font-weight-bold">Transaction Id</h4>
-              <h4 className="col fs-6 font-weight-bold">Gateway</h4> */}
-              {/* <h4 className="col fs-6">CreatedBy</h4> */}
-              <h4 className="col fs-6 font-weight-bold">Transaction Type</h4>
-              {/* <h4 className="col fs-6 font-weight-bold">User Id</h4>
-              <h4 className="col fs-6 font-weight-bold">Bank</h4>
-              <h4 className="col fs-6 font-weight-bold">Website</h4> */}
+            <div className="row"  >
+              <p className="col fs-6 font-weight-bold" style={{border: '2px solid black'}}>Date</p>
+              <p className="col fs-6 font-weight-bold" style={{border: '2px solid black'}}>Amount</p>
+              <p className="col fs-6 font-weight-bold">Transaction Type</p>
+              <p className="col fs-6 font-weight-bold">user ID</p>
+              <p className="col fs-6 font-weight-bold">User Name</p> 
+        
             </div>
           </div>
         </div>
@@ -146,35 +143,32 @@ const Transaction = () => {
                     }}
                   >
                     <div className="card-body">
-                      <div className="row">
-                        <p className="col fs-6 font-weight-bold">
+                      <div className="row" >
+                        <p className="col fs-6 font-weight-bold" style={{border: '2px solid black'}}>
                           {new Date(data.date).toLocaleString("default", {
                             month: "long",
                           })}{" "}
                           {new Date(data.date).getDate()}
                         </p>
-                        <p className="col fs-6 font-weight-bold">
+                        <p className="col fs-6 font-weight-bold" style={{border: '2px solid black'}}>
                           ₹&nbsp;{data.amount}
                         </p>
-                        {/* <p className="col fs-6 text-break font-weight-bold">
+                         <p className="col fs-6 font-weight-bold">
                           {data.transactionID}
                         </p>
-                        <p className="col fs-6 font-weight-bold">
+                        {/* <p className="col fs-6 font-weight-bold">
                           {data.paymentMethod}
-                        </p> */}
-                        {/* <p className="col fs-6 text-break">{data.subAdminId}</p> */}
+                        </p>  */}
+                       
                         <p className="col fs-6 font-weight-bold">
                           {data.transactionType}
                         </p>
-                        {/* <p className="col fs-6 font-weight-bold">
+                         <p className="col fs-6 font-weight-bold">
                           {data.userId}
                         </p>
-                        <p className="col fs-6 font-weight-bold">
-                          {data.bankName}
-                        </p>
-                        <p className="col fs-6 font-weight-bold">
-                          {data.websiteName}
-                        </p> */}
+                         <p className="col fs-6 font-weight-bold">
+                          {data.userName}
+                        </p>  
                       </div>
                     </div>
                   </div>
@@ -214,25 +208,14 @@ const Transaction = () => {
                         <p className="col fs-6 font-weight-bold">
                           ₹&nbsp;{data.amount}
                         </p>
-                        {/* <p className="col fs-6 text-break font-weight-bold">
-                          {data.transactionID}
-                        </p>
-                        <p className="col fs-6 font-weight-bold">
-                          {data.paymentMethod}
-                        </p> */}
-                        {/* <p className="col fs-6 text-break">{data.subAdminId}</p> */}
+                      
                         <p className="col fs-6 font-weight-bold">
                           {data.transactionType}
                         </p>
-                        {/* <p className="col fs-6 font-weight-bold">
+                         <p className="col fs-6 font-weight-bold">
                           {data.userId}
                         </p>
-                        <p className="col fs-6 font-weight-bold">
-                          {data.bankName}
-                        </p>
-                        <p className="col fs-6 font-weight-bold">
-                          {data.websiteName}
-                        </p> */}
+                    
                       </div>
                     </div>
                   </div>
