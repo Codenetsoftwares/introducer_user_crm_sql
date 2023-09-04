@@ -12,47 +12,21 @@ const Transaction = () => {
   const id = auth.user.id;
   const [toggle, setToggle] = useState(true);
   const [documentView, setDocumentView] = useState([]);
-  const [subAdmin, setSubAdmin] = useState("");
-  const [subAdminlist, setSubAdminlist] = useState([]);
   const [documentFilter, setDocumentFilter] = useState([]);
   const [startDatevalue, SetStartDatesetValue] = useState(new Date());
   const [endDatevalue, setEndDateValue] = useState(new Date());
   const [accountData, setAccountData] = useState([]);
 
-  const test = ["subAdminName"];
-
-  const handleClick = (key, value) => {
-    let nArr = [...documentView];
-    // const originalData = [...documentView];
-
-    if (test.includes(key)) {
-      nArr = nArr.filter((item) => item[key] === value);
-    }
-    // if (nArr.length === 0) {
-    //   nArr = originalData;
-    // }
-    setDocumentView(nArr);
-  };
-
   useEffect(() => {
     AccountsService.getprofile(auth.user, id).then(
-      (res) => (setDocumentView(res.data), setAccountData(res.data))
+      (res) => (
+        setDocumentView(res.data.creditTransaction),
+        setAccountData(res.data.creditTransaction)
+      )
     );
   }, [auth, id]);
 
-  // useEffect(() => {
-  //   if (auth.user) {
-  //     TransactionService.subAdminList(auth.user).then((res) => {
-  //       setSubAdminlist(res.data);
-  //     });
-  //   }
-  // }, [auth]);
-
-  const handleSubAdmin = (e) => {
-    const value = e.target.value;
-    setSubAdmin(value);
-    handleClick("subAdminName", value);
-  };
+  console.log(documentView);
 
   const handelDate = () => {
     const sdate = moment(startDatevalue, "DD-MM-YYYY HH:mm").toDate();
@@ -99,30 +73,7 @@ const Transaction = () => {
                   </li> */}
         </ul>
       </nav>
-      <div className="d-flex justify-content-center">
-        <h6 className="fw-bold text-nowrap pt-2"> SubAdminlist</h6>
-        <select
-          className="form-control mx-3 w-25"
-          value={subAdmin || ""}
-          autoComplete="off"
-          onChange={handleSubAdmin}
-          style={{
-            boxShadow: " 17px 15px 27px -9px rgba(0,0,0,0.41)",
-            border: "0.5px solid black",
-            borderRadius: "6px",
-          }}
-          required
-        >
-          <option selected>Select subAdmin</option>
-          {subAdminlist.map((data) => {
-            return (
-              <option key={data._id} value={data.firstname}>
-                {data.firstname}
-              </option>
-            );
-          })}
-        </select>
-      </div>
+
       <div className="d-flex pt-2 justify-content-center">
         <h6 className="fw-bold text-nowrap pt-2"> Start Date</h6>
         <Datetime
@@ -188,13 +139,9 @@ const Transaction = () => {
                 <div className="row">
                   <h4 className="col fs-6">Date</h4>
                   <h4 className="col fs-6">Amount</h4>
-                  <h4 className="col fs-6">Transaction Id</h4>
                   <h4 className="col fs-6">Transaction Type</h4>
-                  <h4 className="col fs-6">Gateway</h4>
-                  <h4 className="col fs-6">CreatedBy</h4>
                   <h4 className="col fs-6">User Id</h4>
-                  <h4 className="col fs-6">Bank</h4>
-                  <h4 className="col fs-6">Website</h4>
+                  {/* <h4 className="col fs-6">userName</h4> */}
                 </div>
               </div>
             </div>
@@ -219,64 +166,12 @@ const Transaction = () => {
                     <div className="card-body">
                       <div className="row">
                         <p className="col fs-6">
-                          {new Date(data.createdAt).toLocaleString("default")}{" "}
+                          {new Date(data.date).toLocaleString("default")}{" "}
                         </p>
-                        {data.amount && (
-                          <p className="col fs-6">₹&nbsp;{data.amount}</p>
-                        )}
-                        {data.depositAmount && (
-                          <p className="col fs-6">
-                            ₹&nbsp;{data.depositAmount}
-                          </p>
-                        )}
-                        {data.withdrawAmount && (
-                          <p className="col fs-6">
-                            ₹&nbsp;{data.withdrawAmount}
-                          </p>
-                        )}
-                        {data.transactionID && (
-                          <p className="col fs-6 text-break">
-                            {data.transactionID}
-                          </p>
-                        )}
-                        {data.depositAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.withdrawAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.transactionType && (
-                          <p className="col fs-6 text-break">
-                            {data.transactionType}
-                          </p>
-                        )}
-                        {data.depositAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.withdrawAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.paymentMethod && (
-                          <p className="col fs-6">{data.paymentMethod}</p>
-                        )}
-                        <p className="col fs-6 text-break">
-                          {data.subAdminName}
-                        </p>
-                        {data.paymentMethod && (
-                          <p className="col fs-6">{data.userId}</p>
-                        )}
-                        {data.depositAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.withdrawAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        <p className="col fs-6">
-                          {data.bankName ? data.bankName : "N.A"}
-                        </p>
-                        <p className="col fs-6">
-                          {data.websiteName ? data.websiteName : "N.A"}
-                        </p>
+                        <p className="col fs-6">{data.amount}</p>
+                        <p className="col fs-6">{data.transactionType}</p>
+                        <p className="col fs-6">{data.userId}</p>
+                        {/* <p className="col fs-6">{data.userName}</p> */}
                       </div>
                     </div>
                   </div>
@@ -300,12 +195,9 @@ const Transaction = () => {
                 <div className="row">
                   <h4 className="col fs-6">Date</h4>
                   <h4 className="col fs-6">Amount</h4>
-                  <h4 className="col fs-6">Transaction Id</h4>
-                  <h4 className="col fs-6">Gateway</h4>
-                  <h4 className="col fs-6">CreatedBy</h4>
+                  <h4 className="col fs-6">Transaction Type</h4>
                   <h4 className="col fs-6">User Id</h4>
-                  <h4 className="col fs-6">Bank</h4>
-                  <h4 className="col fs-6">Website</h4>
+                  {/* <h4 className="col fs-6">userName</h4> */}
                 </div>
               </div>
             </div>
@@ -330,65 +222,12 @@ const Transaction = () => {
                     <div className="card-body">
                       <div className="row">
                         <p className="col fs-6">
-                          {new Date(data.createdAt).toLocaleString("default")}{" "}
+                          {new Date(data.date).toLocaleString("default")}{" "}
                         </p>
-                        {data.amount && (
-                          <p className="col fs-6">₹&nbsp;{data.amount}</p>
-                        )}
-                        {data.depositAmount && (
-                          <p className="col fs-6">
-                            ₹&nbsp;{data.depositAmount}
-                          </p>
-                        )}
-                        {data.withdrawAmount && (
-                          <p className="col fs-6">
-                            ₹&nbsp;{data.withdrawAmount}
-                          </p>
-                        )}
-                        {data.transactionID && (
-                          <p className="col fs-6 text-break">
-                            {data.transactionID}
-                          </p>
-                        )}
-                        {data.depositAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.withdrawAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.transactionType && (
-                          <p className="col fs-6 text-break">
-                            {data.transactionType}
-                          </p>
-                        )}
-                        {data.depositAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.withdrawAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.paymentMethod && (
-                          <p className="col fs-6">{data.paymentMethod}</p>
-                        )}
-
-                        <p className="col fs-6 text-break">
-                          {data.subAdminName}
-                        </p>
-                        {data.paymentMethod && (
-                          <p className="col fs-6">{data.userId}</p>
-                        )}
-                        {data.depositAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        {data.withdrawAmount && (
-                          <p className="col fs-6 text-break">N.A</p>
-                        )}
-                        <p className="col fs-6">
-                          {data.bankName ? data.bankName : "N.A"}
-                        </p>
-                        <p className="col fs-6">
-                          {data.websiteName ? data.websiteName : "N.A"}
-                        </p>
+                        <p className="col fs-6">{data.amount}</p>
+                        <p className="col fs-6">{data.transactionType}</p>
+                        <p className="col fs-6">{data.userId}</p>
+                        {/* <p className="col fs-6">{data.userName}</p> */}
                       </div>
                     </div>
                   </div>
