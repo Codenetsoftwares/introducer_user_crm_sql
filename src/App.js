@@ -9,6 +9,8 @@ import { RequireAuth } from "./Utils/RequireAuth";
 import EditProfile from "./Component/EditProfile";
 import Transaction from "./Component/Transaction";
 import ForPass from "./Component/ForPass";
+import MyNetwork from "./Component/MyNetwork";
+import IndividualNetwork from "./Component/IndividualNetwork";
 
 function App() {
   return (
@@ -25,6 +27,23 @@ function App() {
               element={
                 <RequireAuth>
                   <Profile />
+                </RequireAuth>
+              }
+            />
+            <Route
+              path="mynetworks"
+              element={
+                <RequireAuth>
+                  <MyNetwork />
+                </RequireAuth>
+              }
+            />
+
+            <Route
+              path="mynetworks/:id"
+              element={
+                <RequireAuth>
+                  <IndividualNetwork />
                 </RequireAuth>
               }
             />
@@ -46,6 +65,8 @@ function App() {
                 </RequireAuth>
               }
             />
+
+            
           </Routes>
         </BrowserRouter>
       </AuthProvider>

@@ -75,6 +75,26 @@ class AccountsService {
       },
     });
   }
+
+  getIntroducerUser(user) {
+    return axios({
+      method: "get",
+      url: `${API_HOST}/api/list-introducer-user`,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+  }
+
+  getIntroducerSingleUser(id,user) {
+    return axios({
+      method: "get",
+      url: `${API_HOST}/api/introducer-user-single-data/${id}`,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+  }
 }
 
 export default new AccountsService();
