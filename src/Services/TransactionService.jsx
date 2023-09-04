@@ -13,5 +13,14 @@ class TransactionService {
       },
     });
   }
+  subAdminList(user) {
+    return axios({
+      method: "get",
+      url: API_HOST + "/api/admin/sub-admin-name",
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+  }
 }
 export default new TransactionService();
