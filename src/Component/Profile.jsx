@@ -18,6 +18,9 @@ const Profile = () => {
   const [userAuth, setUserAuth] = useState([]);
   const [profiledata, setProfiledata] = useState([]);
   const [FoundObject, setFoundObject] = useState([]);
+  // const [Lbalance setLbalance] = useState([]);
+  const[balance , setBalance] = useState([]);
+
 
   const handleLogout = () => {
     const response = true;
@@ -34,6 +37,14 @@ const Profile = () => {
     );
   }, [auth, id]);
   console.log("This is Profile Data =>>>", profiledata);
+
+  useEffect(() => {
+   AccountsService.liveBalance(auth.user).then((res) =>
+   setBalance(res.data)
+    );
+  }, [auth, id]);
+  console.log("This is Live Balance=>>>", balance );
+
 
   // useEffect(() => {
   //   AccountsService.getprofile(auth.user)
@@ -102,7 +113,8 @@ const Profile = () => {
                     style={{ width: "150px" }}
                   />
                   <h5 className="my-3 pt-3">Hi!&nbsp;{profiledata.firstname}</h5>
-                  <p className="text-muted mb-1 pt-3">{profiledata.email}</p>
+                  <p className="text-muted">Your Balance : <b style={{color:'blue'}}>{balance.LiveBalance}</b></p>
+                  <p className="text-muted ">{profiledata.email}</p>
                   <p className="text-muted mb-4 ">
                     <img
                       src={verify}

@@ -75,6 +75,15 @@ class AccountsService {
       },
     });
   }
+  liveBalance(user,id) {
+    return axios({
+      method: "get",
+      url: `${API_HOST}/api/introducer/introducer-live-balance/${id}`,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+  }
 }
 
 export default new AccountsService();
