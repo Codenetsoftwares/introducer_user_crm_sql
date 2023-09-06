@@ -87,12 +87,17 @@ const Profile = () => {
                 <ul className="breadcrumb mb-0">
                   <li className="breadcrumb-item">
                     <a href="#">
-                      <b>Your Profile</b>
+                      <b>My Profile</b>
                     </a>
                   </li>
                   <li className="breadcrumb-item">
                     <Link to="/transaction">
-                      <b>Your Transactions</b>
+                      <b>My Transactions</b>
+                    </Link>
+                  </li>
+                  <li className="breadcrumb-item">
+                    <Link to="/mynetworks">
+                      <b>My Network</b>
                     </Link>
                   </li>
                   {/* <li className="breadcrumb-item active" aria-current="page">
