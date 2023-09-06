@@ -76,6 +76,7 @@ class AccountsService {
     });
   }
 
+
   getIntroducerUser(user) {
     return axios({
       method: "get",
@@ -86,10 +87,16 @@ class AccountsService {
     });
   }
 
-  getIntroducerSingleUser(id,user) {
+//   getIntroducerSingleUser(id,user) {
+//     return axios({
+//       method: "get",
+//       url: `${API_HOST}/api/introducer-user-single-data/${id}`,
+
+  liveBalance(user,id) {
     return axios({
       method: "get",
-      url: `${API_HOST}/api/introducer-user-single-data/${id}`,
+      url: `${API_HOST}/api/introducer/introducer-live-balance/${id}`,
+
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
