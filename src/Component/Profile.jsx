@@ -19,8 +19,7 @@ const Profile = () => {
   const [profiledata, setProfiledata] = useState([]);
   const [FoundObject, setFoundObject] = useState([]);
   // const [Lbalance setLbalance] = useState([]);
-  const[balance , setBalance] = useState([]);
-
+  const [balance, setBalance] = useState([]);
 
   const handleLogout = () => {
     const response = true;
@@ -39,12 +38,9 @@ const Profile = () => {
   console.log("This is Profile Data =>>>", profiledata);
 
   useEffect(() => {
-   AccountsService.liveBalance(auth.user).then((res) =>
-   setBalance(res.data)
-    );
+    AccountsService.liveBalance(auth.user).then((res) => setBalance(res.data));
   }, [auth, id]);
-  console.log("This is Live Balance=>>>", balance );
-
+  console.log("This is Live Balance=>>>", balance);
 
   // useEffect(() => {
   //   AccountsService.getprofile(auth.user)
@@ -117,8 +113,13 @@ const Profile = () => {
                     className="rounded-circle img-fluid"
                     style={{ width: "150px" }}
                   />
-                  <h5 className="my-3 pt-3">Hi!&nbsp;{profiledata.firstname}</h5>
-                  <p className="text-muted">Your Balance : <b style={{color:'blue'}}>{balance.LiveBalance}</b></p>
+                  <h5 className="my-3 pt-3">
+                    Hi!&nbsp;{profiledata.firstname}
+                  </h5>
+                  <p className="text-muted">
+                    Live Balance :{" "}
+                    <b style={{ color: "blue" }}>{balance.LiveBalance}</b>
+                  </p>
                   <p className="text-muted ">{profiledata.email}</p>
                   <p className="text-muted mb-4 ">
                     <img
@@ -147,7 +148,6 @@ const Profile = () => {
                     >
                       <small>Edit Profile</small>
                     </button> */}
-
                   </div>
                 </div>
               </div>
@@ -164,8 +164,8 @@ const Profile = () => {
                     <br />
                     <h6>Introducer Id:&nbsp;{profiledata.introducerId}</h6>
                     <br />
-                    <div className="d-flex flex-row">
-                      {/* <h6>
+                    {/* <div className="d-flex flex-row"> */}
+                    {/* <h6>
                         Payment Info:&nbsp;
                         <button
                           style={{
@@ -179,9 +179,9 @@ const Profile = () => {
                           Click Here
                         </button>
                       </h6> */}
-                      <h6>Introducer Percentage:&nbsp;{profiledata.introducerPercentage}</h6>
-                    </div>
-                    <br />
+                    {/* <h6>Introducer Percentage:&nbsp;{profiledata.introducerPercentage}</h6> */}
+                    {/* </div> */}
+                    {/* <br /> */}
                     {/* {profiledata.webSiteDetail &&
                       profiledata.webSiteDetail.length > 0 ? (
                       <div className="d-flex flex-row">

@@ -30,7 +30,7 @@ const Login = () => {
   const handelsubmit = (e) => {
     e.preventDefault();
     AccountsService.userLogin({
-      email: userId,
+      userName: userId,
       password: password,
     })
       .then((res) => {
@@ -299,8 +299,8 @@ const Login = () => {
               </span>
             </div>
             <input
-              type="email"
-              placeholder="User id"
+              type="text"
+              placeholder="UserName"
               className="form-control"
               id="userId"
               onChange={handleClickUser}
