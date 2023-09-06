@@ -87,12 +87,18 @@ class AccountsService {
     });
   }
 
-//   getIntroducerSingleUser(id,user) {
-//     return axios({
-//       method: "get",
-//       url: `${API_HOST}/api/introducer-user-single-data/${id}`,
+  getIntroducerSingleUser(id, user) {
+    return axios({
+      method: "get",
+      url: `${API_HOST}/api/introducer-user-single-data/${id}`,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+  }
 
-  liveBalance(user,id) {
+  
+  liveBalance(user, id) {
     return axios({
       method: "get",
       url: `${API_HOST}/api/introducer/introducer-live-balance/${id}`,
