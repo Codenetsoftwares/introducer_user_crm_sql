@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import "./IndividulaNetwork.css"
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
+import moment from "moment";
 
 const IndividualNetwork = () => {
   const [singleData, setSingleData] = useState([]);
@@ -14,72 +15,73 @@ const IndividualNetwork = () => {
   const [startDatevalue, SetStartDatesetValue] = useState(new Date());
   const [endDatevalue, setEndDateValue] = useState(new Date());
   const [toggle, setToggle] = useState(true);
+  const [documentView, setDocumentView] = useState([]);
+  const [documentFilter, setDocumentFilter] = useState([]);
+  const [accountData, setAccountData] = useState([]);
 
-  // const test = ["transactionType", "subAdminName", "websiteName", "bankName"];
+
+  const test = ["transactionType", "subAdminName", "websiteName", "bankName"];
 
 
-  // const handleClick = (key, value) => {
-  //   let nArr = [...singleData];
-  //   if (test.includes(key)) {
-  //     nArr = nArr.filter((item) => item[key] === value);
-  //   }
-  //   setSingleData(nArr);
-  // };
+  const handleClick = (key, value) => {
+    let nArr = [...documentView];
+    if (test.includes(key)) {
+      nArr = nArr.filter((item) => item[key] === value);
+    }
+    setDocumentView(nArr);
+  };
 
   useEffect(() => {
     AccountsService.getIntroducerSingleUser(id, auth.user)
       .then((res) => {
         console.log(res.data)
         setSingleData(res.data)
+        setDocumentView(res.data[0].transactionDetail);
+        setAccountData(res.data[0].transactionDetail);
       })
   }, [auth.user, id])
 
-  // const handleChange = (e) => {
-  //   const value = e.target.value;
-  //   setSelect(value);
-  //   handleClick("transactionType", value);
-  // };
+  const handleChange = (e) => {
+    const value = e.target.value;
+    setSelect(value);
+    handleClick("transactionType", value);
+  };
 
-  // const handelDate = () => {
-  //   const sdate = moment(startDatevalue, "DD-MM-YYYY HH:mm").toDate();
-  //   const edate = moment(endDatevalue, "DD-MM-YYYY HH:mm").toDate();
-  //   const filteredDocuments = documentView.filter((data) => {
-  //     const transactionDate = new Date(data.createdAt);
-  //     return transactionDate >= sdate && transactionDate <= edate;
-  //   });
-  //   setDocumentFilter(filteredDocuments);
-  //   setToggle(false);
-  // };
+  const handelDate = () => {
+    const sdate = moment(startDatevalue, "DD-MM-YYYY HH:mm").toDate();
+    const edate = moment(endDatevalue, "DD-MM-YYYY HH:mm").toDate();
+    const filteredDocuments = documentView.filter((data) => {
+      const transactionDate = new Date(data.createdAt);
+      return transactionDate >= sdate && transactionDate <= edate;
+    });
+    setDocumentFilter(filteredDocuments);
+    setToggle(false);
+  };
 
-  // const handleReset = () => {
-  //   setSelect("");
-  //   setDocumentView(accountData);
-  //   setToggle(true);
-  //   SetStartDatesetValue(new Date());
-  //   setEndDateValue(new Date());
-  // };
+  const handleReset = () => {
+    setSelect("");
+    setDocumentView(accountData);
+    setToggle(true);
+    SetStartDatesetValue(new Date());
+    setEndDateValue(new Date());
+  };
 
-  // const handleStartDatevalue = (e) => {
-  //   SetStartDatesetValue(moment(e).format("DD-MM-YYYY HH:mm"));
-  // };
+  const handleStartDatevalue = (e) => {
+    SetStartDatesetValue(moment(e).format("DD-MM-YYYY HH:mm"));
+  };
 
-  // const handleEndDatevalue = (e) => {
-  //   setEndDateValue(moment(e).format("DD-MM-YYYY HH:mm"));
-  // };
+  const handleEndDatevalue = (e) => {
+    setEndDateValue(moment(e).format("DD-MM-YYYY HH:mm"));
+  };
+  // console.log('res',res)
   return (
-    <div class="container">
-      <div class="main-body">
-
-        <nav aria-label="breadcrumb" class="main-breadcrumb">
-          <ol class="breadcrumb">
-            <li class="breadcrumb-item active" aria-current="page">User Profile</li>
-          </ol>
-        </nav>
+    <div class="fluid-container" >
+      <div class="main-body" >
 
         {
           singleData.map((user) => {
             return (
-              <div class="row gutters-sm">
+              <div class="row gutters-sm ">
                 <div class="col-md-4 mb-3">
                   <div class="card">
                     <div class="card-body">
@@ -96,7 +98,7 @@ const IndividualNetwork = () => {
                   </div>
 
                 </div>
-                <div class="col-md-8">
+                <div class="col-md-8" >
                   <div class="card mb-3">
                     <div class="card-body">
                       <div className=" container mt-1">
@@ -117,10 +119,10 @@ const IndividualNetwork = () => {
                             <option className="d-flex" value="All">
                               <b>All</b>
                             </option>
-                            <option className="d-flex" value="Manual-Deposit">
+                            <option className="d-flex" value="Deposit">
                               <b>Deposit</b>
                             </option>
-                            <option className="d-flex" value="Manual-Deposit">
+                            <option className="d-flex" value="Withdraw">
                               <b>Withdraw</b>
                             </option>
 
@@ -190,9 +192,8 @@ const IndividualNetwork = () => {
                               </div>
                             </div>
 
-                            {singleData?.transactionDetail?.length > 0 ? (
-                              singleData?.transactionDetail?.map((data, i) => {
-                                console.log('data',data)
+                            {documentView?.length > 0 ? (
+                              documentView?.map((data, i) => {
                                 return (
                                   <div
                                     className="card rounded-2"
@@ -270,23 +271,7 @@ const IndividualNetwork = () => {
                                           {data.websiteName ? data.websiteName : "N.A"}
                                         </p>
                                       </div>
-                                      <Link to={`/admindash/${data._id}`} className="col">
-                                        <button type="button" className="btn btn-primary">
-                                          <FontAwesomeIcon
-                                            icon={faEdit}
-                                            data-toggle="modal"
-                                            data-target="#exampleModalCenter"
-                                          />
-                                        </button>
-                                      </Link>
-                                      <Link to={`/admindash/${data._id}`} className="col">
-                                        <button type="button" class="btn btn-danger">
-                                          <FontAwesomeIcon
-                                            icon={faTrashAlt}
-                                            className="delete-icon"
-                                          />
-                                        </button>
-                                      </Link>
+                                      
                                     </div>
                                   </div>
                                 );
@@ -319,8 +304,8 @@ const IndividualNetwork = () => {
                               </div>
                             </div>
 
-                            {singleData.transactionDetail.length > 0 ? (
-                              singleData.transactionDetail.map((data, i) => {
+                            {documentFilter.length > 0 ? (
+                              documentFilter.map((data, i) => {
                                 return (
                                   <div
                                     className="card rounded-2"
@@ -399,23 +384,6 @@ const IndividualNetwork = () => {
                                           {data.websiteName ? data.websiteName : "N.A"}
                                         </p>
                                       </div>
-                                      <Link to={`/admindash/${data._id}`} className="col">
-                                        <button type="button" className="btn btn-primary">
-                                          <FontAwesomeIcon
-                                            icon={faEdit}
-                                            data-toggle="modal"
-                                            data-target="#exampleModalCenter"
-                                          />
-                                        </button>
-                                      </Link>
-                                      <Link to={`/admindash/${data._id}`} className="col">
-                                        <button type="button" class="btn btn-danger">
-                                          <FontAwesomeIcon
-                                            icon={faTrashAlt}
-                                            className="delete-icon"
-                                          />
-                                        </button>
-                                      </Link>
                                     </div>
                                   </div>
                                 );
