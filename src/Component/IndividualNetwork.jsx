@@ -6,6 +6,7 @@ import "./IndividulaNetwork.css"
 import Datetime from "react-datetime";
 import "react-datetime/css/react-datetime.css";
 import moment from "moment";
+import { CSVLink } from "react-csv";
 
 const IndividualNetwork = () => {
   const [singleData, setSingleData] = useState([]);
@@ -173,6 +174,21 @@ const IndividualNetwork = () => {
                             >
                               Reset
                             </button>
+                          </div>
+                          <div className="mx-2">
+                            {toggle ? (
+                              <div className="mx-2">
+                                <CSVLink data={documentView} className="btn btn-success">
+                                  Download Data
+                                </CSVLink>
+                              </div>
+                            ) : (
+                              <div className="mx-2">
+                                <CSVLink data={documentFilter} className="btn btn-success">
+                                  Download Filter Data
+                                </CSVLink>
+                              </div>
+                            )}
                           </div>
                         </div>
                         {toggle ? (
