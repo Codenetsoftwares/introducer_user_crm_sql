@@ -89,9 +89,16 @@ const IndividualNetwork = () => {
                         <img src="https://bootdey.com/img/Content/avatar/avatar7.png" alt="Admin" class="rounded-circle" width="150" />
                         <div class="mt-3">
                           <h4>{user.firstname} {user.lastname}</h4>
-                          <p class="text-secondary mb-1 text-capitalize">Wallet: {user.wallet}</p>
-                          <p class="text-secondary mb-1 text-capitalize">{user.userName}</p>
-
+                          <div class="text-left">
+                             {/* <p class="text-secondary mb-1 text-capitalize">Firstname:&nbsp;{user.firstname}&nbsp;</p>
+                             <p class="text-secondary mb-1 text-capitalize">Lastname:&nbsp;{user.lastname}&nbsp;</p> */}
+                             <p class="text-secondary mb-1 text-capitalize">Username:&nbsp;{user.userName}&nbsp;</p>
+                             <p class="text-secondary mb-1 text-capitalize">UserId:&nbsp;{user.userId}&nbsp;</p>
+                             <p class="text-secondary mb-1 text-capitalize">Role:&nbsp;{user.role}&nbsp;</p>
+                             <p class="text-secondary mb-1 text-capitalize">Wallet:&nbsp;{user.wallet}&nbsp;</p>
+                             <p class="text-secondary mb-1 text-capitalize">Introducer UserId:&nbsp;{user.introducersUserId}&nbsp;</p>
+                             <p class="text-secondary mb-1 text-capitalize">Introducer Percentage:&nbsp;{user.introducerPercentage}</p>
+                             </div>
                         </div>
                       </div>
                     </div>

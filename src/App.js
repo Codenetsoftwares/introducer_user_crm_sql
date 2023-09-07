@@ -57,14 +57,14 @@ function App() {
               }
             />
 
-            <Route
+             <Route
               path="transaction"
               element={
                 <RequireAuth>
                   <Transaction />
                 </RequireAuth>
               }
-            />
+            /> 
 
             
           </Routes>

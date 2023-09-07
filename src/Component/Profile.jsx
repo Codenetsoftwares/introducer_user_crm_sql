@@ -9,6 +9,7 @@ import Modal from "./Modal";
 import ModalBank from "./ModalBank";
 import AccountsService from "../Services/AccountsService";
 import ModalBankView from "./ModalBankView";
+import './Profile.css'
 
 const Profile = () => {
   const auth = useAuth();
@@ -86,11 +87,11 @@ const Profile = () => {
                       <b>My Profile</b>
                     </a>
                   </li>
-                  <li className="breadcrumb-item">
-                    <Link to="/transaction">
+                  {/* <li className="breadcrumb-item">
+                     <Link to="/transaction">
                       <b>My Transactions</b>
                     </Link>
-                  </li>
+                  </li> */}
                   <li className="breadcrumb-item">
                     <Link to="/mynetworks">
                       <b>My Network</b>
@@ -116,10 +117,14 @@ const Profile = () => {
                   <h5 className="my-3 pt-3">
                     Hi!&nbsp;{profiledata.firstname}
                   </h5>
+                  {/* <marquee class="news-content"> */}
                   <p className="text-muted">
                     Live Balance :{" "}
-                    <b style={{ color: "blue" }}>{balance.LiveBalance}</b>
+                    {balance.LiveBalance>0?(
+                    <blink> <b className="blink_me" style={{color:'green'}}>{balance.LiveBalance}</b></blink>):(<b className="blink_me" style={{color:'red'}}><blink>{balance.LiveBalance}</blink></b>)}
+
                   </p>
+                  {/* </marquee> */}
                   <p className="text-muted ">{profiledata.email}</p>
                   <p className="text-muted mb-4 ">
                     <img
@@ -162,7 +167,9 @@ const Profile = () => {
                       {profiledata.lastname}{" "}
                     </h6>
                     <br />
-                    <h6>Introducer Id:&nbsp;{profiledata.introducerId}</h6>
+                    <h6>Username: &nbsp;{profiledata.userName}</h6> 
+                    <br />
+                    {/* <h6>Introducer Id:&nbsp;{profiledata.introducerId}</h6> */}
                     <br />
                     {/* <div className="d-flex flex-row"> */}
                     {/* <h6>
@@ -192,9 +199,10 @@ const Profile = () => {
                       </div>
                     ) : null} */}
                     {/* <br /> */}
-                    <h6>wallet: &nbsp;{profiledata.wallet}</h6>
-                    <br />
+                    {/* <h6>wallet: &nbsp;{profiledata.wallet}</h6>
+                    <br /> */}
                     <h6>Role: &nbsp;{profiledata.role}</h6>
+                   
                   </p>
                 </div>
               </div>
