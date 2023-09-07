@@ -120,8 +120,8 @@ const Profile = () => {
                   {/* <marquee class="news-content"> */}
                   <p className="text-muted">
                     Live Balance :{" "}
-                    {balance.LiveBalance>0?(
-                    <blink> <b className="blink_me" style={{color:'green'}}>{balance.LiveBalance}</b></blink>):(<b className="blink_me" style={{color:'red'}}><blink>{balance.LiveBalance}</blink></b>)}
+                    {balance.LiveBalance > 0 ? (
+                      <blink> <b className="blink_me" style={{ color: 'green' }}>{balance.LiveBalance}</b></blink>) : (<b className="blink_me" style={{ color: 'red' }}><blink>{balance.LiveBalance}</blink></b>)}
 
                   </p>
                   {/* </marquee> */}
@@ -167,7 +167,9 @@ const Profile = () => {
                       {profiledata.lastname}{" "}
                     </h6>
                     <br />
-                    <h6>Username: &nbsp;{profiledata.userName}</h6> 
+                    <h6>Username: &nbsp;{profiledata.userName}</h6>
+                    <br />
+                    <h6>Introducer Id: &nbsp;{profiledata.introducerId}</h6>
                     <br />
                     {/* <h6>Introducer Id:&nbsp;{profiledata.introducerId}</h6> */}
                     <br />
@@ -202,7 +204,7 @@ const Profile = () => {
                     {/* <h6>wallet: &nbsp;{profiledata.wallet}</h6>
                     <br /> */}
                     <h6>Role: &nbsp;{profiledata.role}</h6>
-                   
+
                   </p>
                 </div>
               </div>
