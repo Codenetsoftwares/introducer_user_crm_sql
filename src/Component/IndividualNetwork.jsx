@@ -227,6 +227,9 @@ const IndividualNetwork = () => {
                                   <th scope="col fs-6" className="text-primary">
                                     User Id
                                   </th>
+                                  <th scope="col fs-6" className="text-primary">
+                                    Introducer Id
+                                  </th>
                                   <th scope="col" className="text-primary">
                                     Bank
                                   </th>
@@ -306,6 +309,17 @@ const IndividualNetwork = () => {
                                           )}
                                         </td>
                                         <td>
+                                          {data.paymentMethod && (
+                                            <p className="col fs-6">{data.introducerId}</p>
+                                          )}
+                                          {data.depositAmount && (
+                                            <p className="col fs-6 text-break">N.A</p>
+                                          )}
+                                          {data.withdrawAmount && (
+                                            <p className="col fs-6 text-break">N.A</p>
+                                          )}
+                                        </td>
+                                        <td>
                                           <p className="col fs-6">
                                             {data.bankName ? data.bankName : "N.A"}
                                           </p>
@@ -358,7 +372,10 @@ const IndividualNetwork = () => {
                                   </th>
                                   <th scope="col fs-6" className="text-primary">
                                     User Id
-                                  </th>
+                                    </th>
+                                    <th scope="col fs-6" className="text-primary">
+                                      Introducer Id
+                                    </th>
                                   <th scope="col" className="text-primary">
                                     Bank
                                   </th>
@@ -429,6 +446,17 @@ const IndividualNetwork = () => {
                                         <td>
                                           {data.paymentMethod && (
                                             <p className="col fs-6">{data.userId}</p>
+                                          )}
+                                          {data.depositAmount && (
+                                            <p className="col fs-6 text-break">N.A</p>
+                                          )}
+                                          {data.withdrawAmount && (
+                                            <p className="col fs-6 text-break">N.A</p>
+                                          )}
+                                        </td>
+                                        <td>
+                                          {data.paymentMethod && (
+                                            <p className="col fs-6">{data.introducerId}</p>
                                           )}
                                           {data.depositAmount && (
                                             <p className="col fs-6 text-break">N.A</p>
