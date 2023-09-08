@@ -98,7 +98,7 @@ class AccountsService {
   }
 
   
-  liveBalance(user, id) {
+  liveBalance( id,user) {
     return axios({
       method: "get",
       url: `${API_HOST}/api/introducer/introducer-live-balance/${id}`,

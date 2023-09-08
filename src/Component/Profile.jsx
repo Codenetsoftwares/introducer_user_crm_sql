@@ -39,7 +39,7 @@ const Profile = () => {
   console.log("This is Profile Data =>>>", profiledata);
 
   useEffect(() => {
-    AccountsService.liveBalance(auth.user).then((res) => setBalance(res.data));
+    AccountsService.liveBalance(id, auth.user).then((res) => setBalance(res.data));
   }, [auth, id]);
   console.log("This is Live Balance=>>>", balance);
 
