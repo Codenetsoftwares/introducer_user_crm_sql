@@ -233,24 +233,6 @@ const IndividualNetwork = () => {
                                   <th scope="col" className="text-primary">
                                     Website
                                   </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Before Bank Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Current Bank Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Before Website Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Current Website Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Before Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Current Balance
-                                  </th>
                                 </tr>
                               </thead>
                               {/* </div> */}
@@ -333,98 +315,6 @@ const IndividualNetwork = () => {
                                             {data.websiteName ? data.websiteName : "N.A"}
                                           </p>
                                         </td>
-                                        <td>
-                                          {data.beforeBalanceBankWithdraw ? (
-                                            <p className="col fs-6">
-                                              {data.beforeBalanceBankWithdraw && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.beforeBalanceBankWithdraw}
-                                                </p>
-                                              )}
-                                              {data.beforeBalanceBankDeposit && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.beforeBalanceBankDeposit}
-                                                </p>
-                                              )}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.beforeBalanceBankWithdraw ? (
-                                            <p className="col fs-6">
-                                              {data.currentBalanceBankWithdraw && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.currentBalanceBankWithdraw}
-                                                </p>
-                                              )}
-                                              {data.currentBalanceBankDeposit && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.currentBalanceBankDeposit}
-                                                </p>
-                                              )}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.beforeBalanceBankWithdraw ? (
-                                            <p className="col fs-6">
-                                              {data.beforeBalanceWebsiteWithdraw && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.beforeBalanceWebsiteWithdraw}
-                                                </p>
-                                              )}
-                                              {data.beforeBalanceWebsiteDeposit && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.beforeBalanceWebsiteDeposit}
-                                                </p>
-                                              )}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.beforeBalanceBankWithdraw ? (
-                                            <p className="col fs-6">
-                                              {data.currentBalanceWebsiteWithdraw && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.currentBalanceWebsiteWithdraw}
-                                                </p>
-                                              )}
-                                              {data.currentBalanceWebsiteDeposit && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.currentBalanceWebsiteDeposit}
-                                                </p>
-                                              )}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.beforeBalance ? (
-                                            <p className="col fs-6">
-                                              {data.beforeBalance ? data.beforeBalance : "N.A"}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.currentBalance ? (
-                                            <p className="col fs-6">
-                                              {data.currentBalance
-                                                ? data.currentBalance
-                                                : "N.A"}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
                                       </tr>
                                     );
                                   })
@@ -474,24 +364,6 @@ const IndividualNetwork = () => {
                                   </th>
                                   <th scope="col" className="text-primary">
                                     Website
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Before Bank Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Current Bank Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Before Website Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Current Website Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Before Balance
-                                  </th>
-                                  <th scope="col text-break fs-6" className="text-primary">
-                                    Current Balance
                                   </th>
                                 </tr>
                               </thead>
@@ -575,98 +447,7 @@ const IndividualNetwork = () => {
                                             {data.websiteName ? data.websiteName : "N.A"}
                                           </p>
                                         </td>
-                                        <td>
-                                          {data.beforeBalanceBankWithdraw ? (
-                                            <p className="col fs-6">
-                                              {data.beforeBalanceBankWithdraw && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.beforeBalanceBankWithdraw}
-                                                </p>
-                                              )}
-                                              {data.beforeBalanceBankDeposit && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.beforeBalanceBankDeposit}
-                                                </p>
-                                              )}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.beforeBalanceBankWithdraw ? (
-                                            <p className="col fs-6">
-                                              {data.currentBalanceBankWithdraw && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.currentBalanceBankWithdraw}
-                                                </p>
-                                              )}
-                                              {data.currentBalanceBankDeposit && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.currentBalanceBankDeposit}
-                                                </p>
-                                              )}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.beforeBalanceBankWithdraw ? (
-                                            <p className="col fs-6">
-                                              {data.beforeBalanceWebsiteWithdraw && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.beforeBalanceWebsiteWithdraw}
-                                                </p>
-                                              )}
-                                              {data.beforeBalanceWebsiteDeposit && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.beforeBalanceWebsiteDeposit}
-                                                </p>
-                                              )}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.beforeBalanceBankWithdraw ? (
-                                            <p className="col fs-6">
-                                              {data.currentBalanceWebsiteWithdraw && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.currentBalanceWebsiteWithdraw}
-                                                </p>
-                                              )}
-                                              {data.currentBalanceWebsiteDeposit && (
-                                                <p className="col fs-6 text-break">
-                                                  ₹&nbsp; {data.currentBalanceWebsiteDeposit}
-                                                </p>
-                                              )}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.beforeBalance ? (
-                                            <p className="col fs-6">
-                                              {data.beforeBalance ? data.beforeBalance : "N.A"}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
-                                        <td>
-                                          {data.currentBalance ? (
-                                            <p className="col fs-6">
-                                              {data.currentBalance
-                                                ? data.currentBalance
-                                                : "N.A"}
-                                            </p>
-                                          ) : (
-                                            "N.A"
-                                          )}
-                                        </td>
+                                        
                                       </tr>
                                     );
                                   })
