@@ -94,10 +94,10 @@ const IndividualNetwork = () => {
                             {/* <p class="text-secondary mb-1 text-capitalize">Firstname:&nbsp;{user.firstname}&nbsp;</p>
                              <p class="text-secondary mb-1 text-capitalize">Lastname:&nbsp;{user.lastname}&nbsp;</p> */}
                             <p class="text-secondary mb-1 text-capitalize">Username:&nbsp;{user.userName}&nbsp;</p>
-                            <p class="text-secondary mb-1 text-capitalize">UserId:&nbsp;{user.userId}&nbsp;</p>
+                            {/* <p class="text-secondary mb-1 text-capitalize">UserId:&nbsp;{user.userId}&nbsp;</p> */}
                             <p class="text-secondary mb-1 text-capitalize">Role:&nbsp;{user.role}&nbsp;</p>
                             <p class="text-secondary mb-1 text-capitalize">Wallet:&nbsp;{user.wallet}&nbsp;</p>
-                            <p class="text-secondary mb-1 text-capitalize">Introducer UserId:&nbsp;{user.introducersUserId}&nbsp;</p>
+                            <p class="text-secondary mb-1 text-capitalize">Introducer Username:&nbsp;{user.introducersUserName}&nbsp;</p>
                             <p class="text-secondary mb-1 text-capitalize">Introducer Percentage:&nbsp;{user.introducerPercentage}</p>
                           </div>
                         </div>
@@ -224,12 +224,12 @@ const IndividualNetwork = () => {
                                   <th scope="col fs-6" className="text-primary">
                                     CreatedBy
                                   </th>
-                                  <th scope="col fs-6" className="text-primary">
+                                  {/* <th scope="col fs-6" className="text-primary">
                                     User Id
                                   </th>
                                   <th scope="col fs-6" className="text-primary">
                                     Introducer Id
-                                  </th>
+                                  </th> */}
                                   <th scope="col" className="text-primary">
                                     Bank
                                   </th>
@@ -297,7 +297,7 @@ const IndividualNetwork = () => {
                                           )}
                                         </td>
                                         <td>{data.subAdminName}</td>
-                                        <td>
+                                        {/* <td>
                                           {data.paymentMethod && (
                                             <p className="col fs-6">{data.userId}</p>
                                           )}
@@ -318,7 +318,7 @@ const IndividualNetwork = () => {
                                           {data.withdrawAmount && (
                                             <p className="col fs-6 text-break">N.A</p>
                                           )}
-                                        </td>
+                                        </td> */}
                                         <td>
                                           <p className="col fs-6">
                                             {data.bankName ? data.bankName : "N.A"}
@@ -370,12 +370,12 @@ const IndividualNetwork = () => {
                                   <th scope="col fs-6" className="text-primary">
                                     CreatedBy
                                   </th>
-                                  <th scope="col fs-6" className="text-primary">
+                                  {/* <th scope="col fs-6" className="text-primary">
                                     User Id
                                     </th>
                                     <th scope="col fs-6" className="text-primary">
                                       Introducer Id
-                                    </th>
+                                    </th> */}
                                   <th scope="col" className="text-primary">
                                     Bank
                                   </th>
@@ -443,7 +443,7 @@ const IndividualNetwork = () => {
                                           )}
                                         </td>
                                         <td>{data.subAdminName}</td>
-                                        <td>
+                                        {/* <td>
                                           {data.paymentMethod && (
                                             <p className="col fs-6">{data.userId}</p>
                                           )}
@@ -453,8 +453,8 @@ const IndividualNetwork = () => {
                                           {data.withdrawAmount && (
                                             <p className="col fs-6 text-break">N.A</p>
                                           )}
-                                        </td>
-                                        <td>
+                                        </td> */}
+                                        {/* <td>
                                           {data.paymentMethod && (
                                             <p className="col fs-6">{data.introducerId}</p>
                                           )}
@@ -464,7 +464,7 @@ const IndividualNetwork = () => {
                                           {data.withdrawAmount && (
                                             <p className="col fs-6 text-break">N.A</p>
                                           )}
-                                        </td>
+                                        </td> */}
                                         <td>
                                           <p className="col fs-6">
                                             {data.bankName ? data.bankName : "N.A"}
