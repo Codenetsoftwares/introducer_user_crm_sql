@@ -6,7 +6,6 @@ import { Link } from "react-router-dom";
 import AccountsService from "../Services/AccountsService";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Utils/Auth";
-
 const Login = () => {
   const auth = useAuth();
   const navigate = useNavigate();
@@ -14,19 +13,16 @@ const Login = () => {
   const [password, setPassword] = useState("");
   // const[persist,setPersist]=useState('')
   const [activeTab, setActiveTab] = useState(3);
-
   const handleClick = (tabNumber) => {
     setActiveTab(tabNumber);
     console.log(tabNumber);
   };
-
   const handleClickUser = (e) => {
     setUserId(e.target.value);
   };
   const handleClickPassword = (e) => {
     setPassword(e.target.value);
   };
-
   const handelsubmit = (e) => {
     e.preventDefault();
     AccountsService.userLogin({
@@ -44,7 +40,6 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        console.log(err);
         if (err.response && err.response.data) {
           console.log(err.response.data.message);
         } else {
@@ -52,7 +47,6 @@ const Login = () => {
         }
       });
   };
-
   // const handleSubmit = (e) => {
   //   e.preventDefault();
   //   switch (activeTab) {
@@ -78,7 +72,6 @@ const Login = () => {
   //             navigate("/");
   //           }
   //         })
-
   //         .catch((err) => {
   //           // console.log(err.data);
   //           if (!err.response) {
@@ -94,7 +87,6 @@ const Login = () => {
   //           }
   //         });
   //       break;
-
   //     case 2:
   //       AccountService.withdrawlogin({
   //         email: userId,
@@ -128,7 +120,6 @@ const Login = () => {
   //           }
   //         });
   //       break;
-
   //     case 3:
   //       AccountService.adminlogin({
   //         email: userId,
@@ -233,7 +224,6 @@ const Login = () => {
             </li>
           </ul>
         </div>
-
         <span
           className="input-group-text px-2"
           style={{
@@ -276,7 +266,6 @@ const Login = () => {
             </i>
           )}
         </span>
-
         <form style={{ width: "18rem" }}>
           {/* UID input group */}
           <div className="input-group mb-3">
@@ -306,7 +295,6 @@ const Login = () => {
               onChange={handleClickUser}
             />
           </div>
-
           {/* Password input group */}
           <div className="input-group mb-3">
             <div className="input-group-prepend">
@@ -335,7 +323,6 @@ const Login = () => {
               onChange={handleClickPassword}
             />
           </div>
-
           {/* Submit button */}
           <div style={{ marginBottom: "2rem" }}>
             <button
@@ -359,21 +346,20 @@ const Login = () => {
               Log In
             </button>
           </div>
-          <div className="d-flex justify-content-center pb-2">
+          {/* <div className="d-flex justify-content-center pb-2">
             <Link to="register">
               <b>Dont Have a Account ? Register</b>
             </Link>
-          </div>
-          <div className="d-flex justify-content-center">
+          </div> */}
+          {/* <div className="d-flex justify-content-center">
             <p to="/forpas">
               {" "}
               <Link to="/forpass">Forgot Password?</Link>{" "}
             </p>
-          </div>
+          </div> */}
         </form>
       </div>
     </div>
   );
 };
-
 export default Login;

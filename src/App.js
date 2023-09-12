@@ -19,7 +19,7 @@ function App() {
         <BrowserRouter>
           <Routes>
             <Route index element={<Login />}></Route>
-            <Route path="register" element={<Register />} />
+            {/* <Route path="register" element={<Register />} /> */}
             <Route path="forpass" element={<ForPass/>} />
 
             <Route

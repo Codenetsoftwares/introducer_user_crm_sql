@@ -169,10 +169,10 @@ const Profile = () => {
                     <br />
                     <h6>Username: &nbsp;{profiledata.userName}</h6>
                     <br />
-                    <h6>Introducer Id: &nbsp;{profiledata.introducerId}</h6>
-                    <br />
+                    {/* <h6>Introducer Id: &nbsp;{profiledata.introducerId}</h6>
+                    <br /> */}
                     {/* <h6>Introducer Id:&nbsp;{profiledata.introducerId}</h6> */}
-                    <br />
+                    {/* <br /> */}
                     {/* <div className="d-flex flex-row"> */}
                     {/* <h6>
                         Payment Info:&nbsp;
@@ -203,7 +203,7 @@ const Profile = () => {
                     {/* <br /> */}
                     {/* <h6>wallet: &nbsp;{profiledata.wallet}</h6>
                     <br /> */}
-                    <h6>Role: &nbsp;{profiledata.role}</h6>
+                    <h6 className="toUppercase">Role: &nbsp;{profiledata.role}</h6>
 
                   </p>
                 </div>
