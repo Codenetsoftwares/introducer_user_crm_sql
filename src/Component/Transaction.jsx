@@ -143,13 +143,13 @@ const Transaction = () => {
                   <th scope="col fs-6" className="text-primary">
                     Date <br />&<br /> Time
                   </th>
-                  <th scope="col text-break fs-6" className="text-primary">
+                  <th scope="col  fs-6" className="text-primary">
                     Amount
                   </th>
-                  <th scope="col text-break fs-6" className="text-primary">
+                  <th scope="col  fs-6" className="text-primary">
                     Transaction Id
                   </th>
-                  <th scope="col text-break fs-6" className="text-primary">
+                  <th scope="col  fs-6" className="text-primary">
                     Transaction Type
                   </th>
                   <th scope="col fs-6" className="text-primary">
@@ -167,25 +167,25 @@ const Transaction = () => {
                   <th scope="col" className="text-primary">
                     Website
                   </th>
-                  <th scope="col text-break fs-6" className="text-primary">
+                  <th scope="col  fs-6" className="text-primary">
                     Before Bank Balance
                   </th>
-                  <th scope="col text-break fs-6" className="text-primary">
+                  <th scope="col  fs-6" className="text-primary">
                     Current Bank Balance
                   </th>
-                  <th scope="col text-break fs-6" className="text-primary">
+                  <th scope="col  fs-6" className="text-primary">
                     Before Website Balance
                   </th>
-                  <th scope="col text-break fs-6" className="text-primary">
+                  <th scope="col  fs-6" className="text-primary">
                     Current Website Balance
                   </th>
-                  <th scope="col text-break fs-6" className="text-primary">
+                  <th scope="col  fs-6" className="text-primary">
                     Before Balance
                   </th>
-                  <th scope="col text-break fs-6" className="text-primary">
+                  <th scope="col  fs-6" className="text-primary">
                     Current Balance
                   </th>
-                  <th scope="col text-break" className="text-primary">
+                  <th scope="col " className="text-primary">
                     Remarks
                   </th>
                 </tr>
@@ -202,37 +202,37 @@ const Transaction = () => {
                             "default"
                           )}{" "}
                         </td>
-                        <td className="text-break">
+                        <td className="">
                           {data.amount && (
-                            <p className="col fs-6">₹&nbsp;{data.amount}</p>
+                            <p className="col fs-6">{data.amount}</p>
                           )}
                           {data.depositAmount && (
                             <p className="col fs-6">
-                              ₹&nbsp;{data.depositAmount}
+                            {data.depositAmount}
                             </p>
                           )}
                           {data.withdrawAmount && (
                             <p className="col fs-6">
-                              ₹&nbsp;{data.withdrawAmount}
+                              {data.withdrawAmount}
                             </p>
                           )}
                         </td>
                         <td>
                           {data.transactionID && (
-                            <p className="col fs-6 text-break">
+                            <p className="col fs-6 ">
                               {data.transactionID}
                             </p>
                           )}
                           {data.depositAmount && (
-                            <p className="col fs-6 text-break">N.A</p>
+                            <p className="col fs-6 ">N.A</p>
                           )}
                           {data.withdrawAmount && (
-                            <p className="col fs-6 text-break">N.A</p>
+                            <p className="col fs-6 ">N.A</p>
                           )}
                         </td>
                         <td>
                           {data.transactionType && (
-                            <p className="col fs-6 text-break">
+                            <p className="col fs-6 ">
                               {data.transactionType}
                             </p>
                           )}
@@ -242,10 +242,10 @@ const Transaction = () => {
                             <p className="col fs-6">{data.paymentMethod}</p>
                           )}
                           {data.depositAmount && (
-                            <p className="col fs-6 text-break">N.A</p>
+                            <p className="col fs-6 ">N.A</p>
                           )}
                           {data.withdrawAmount && (
-                            <p className="col fs-6 text-break">N.A</p>
+                            <p className="col fs-6 ">N.A</p>
                           )}
                         </td>
                         <td>{data.subAdminName}</td>
@@ -254,10 +254,10 @@ const Transaction = () => {
                             <p className="col fs-6">{data.userId}</p>
                           )}
                           {data.depositAmount && (
-                            <p className="col fs-6 text-break">N.A</p>
+                            <p className="col fs-6 ">N.A</p>
                           )}
                           {data.withdrawAmount && (
-                            <p className="col fs-6 text-break">N.A</p>
+                            <p className="col fs-6 ">N.A</p>
                           )}
                         </td>
                         <td>
@@ -274,13 +274,13 @@ const Transaction = () => {
                           {data.beforeBalanceBankWithdraw ? (
                             <p className="col fs-6">
                               {data.beforeBalanceBankWithdraw && (
-                                <p className="col fs-6 text-break">
-                                  ₹&nbsp; {data.beforeBalanceBankWithdraw}
+                                <p className="col fs-6 ">
+                                 {data.beforeBalanceBankWithdraw}
                                 </p>
                               )}
                               {data.beforeBalanceBankDeposit && (
-                                <p className="col fs-6 text-break">
-                                  ₹&nbsp; {data.beforeBalanceBankDeposit}
+                                <p className="col fs-6 ">
+                                 {data.beforeBalanceBankDeposit}
                                 </p>
                               )}
                             </p>
@@ -292,13 +292,13 @@ const Transaction = () => {
                           {data.beforeBalanceBankWithdraw ? (
                             <p className="col fs-6">
                               {data.currentBalanceBankWithdraw && (
-                                <p className="col fs-6 text-break">
-                                  ₹&nbsp; {data.currentBalanceBankWithdraw}
+                                <p className="col fs-6 ">
+                                 {data.currentBalanceBankWithdraw}
                                 </p>
                               )}
                               {data.currentBalanceBankDeposit && (
-                                <p className="col fs-6 text-break">
-                                  ₹&nbsp; {data.currentBalanceBankDeposit}
+                                <p className="col fs-6 ">
+                                 {data.currentBalanceBankDeposit}
                                 </p>
                               )}
                             </p>
@@ -310,13 +310,13 @@ const Transaction = () => {
                           {data.beforeBalanceBankWithdraw ? (
                             <p className="col fs-6">
                               {data.beforeBalanceWebsiteWithdraw && (
-                                <p className="col fs-6 text-break">
-                                  ₹&nbsp; {data.beforeBalanceWebsiteWithdraw}
+                                <p className="col fs-6 ">
+                                 {data.beforeBalanceWebsiteWithdraw}
                                 </p>
                               )}
                               {data.beforeBalanceWebsiteDeposit && (
-                                <p className="col fs-6 text-break">
-                                  ₹&nbsp; {data.beforeBalanceWebsiteDeposit}
+                                <p className="col fs-6 ">
+                                 {data.beforeBalanceWebsiteDeposit}
                                 </p>
                               )}
                             </p>
@@ -328,13 +328,13 @@ const Transaction = () => {
                           {data.beforeBalanceBankWithdraw ? (
                             <p className="col fs-6">
                               {data.currentBalanceWebsiteWithdraw && (
-                                <p className="col fs-6 text-break">
-                                  ₹&nbsp; {data.currentBalanceWebsiteWithdraw}
+                                <p className="col fs-6 ">
+                                 {data.currentBalanceWebsiteWithdraw}
                                 </p>
                               )}
                               {data.currentBalanceWebsiteDeposit && (
-                                <p className="col fs-6 text-break">
-                                  ₹&nbsp; {data.currentBalanceWebsiteDeposit}
+                                <p className="col fs-6 ">
+                                 {data.currentBalanceWebsiteDeposit}
                                 </p>
                               )}
                             </p>
@@ -390,13 +390,13 @@ const Transaction = () => {
                     <th scope="col fs-6" className="text-primary">
                       Date <br />&<br /> Time
                     </th>
-                    <th scope="col text-break fs-6" className="text-primary">
+                    <th scope="col  fs-6" className="text-primary">
                       Amount
                     </th>
-                    <th scope="col text-break fs-6" className="text-primary">
+                    <th scope="col  fs-6" className="text-primary">
                       Transaction Id
                     </th>
-                    <th scope="col text-break fs-6" className="text-primary">
+                    <th scope="col  fs-6" className="text-primary">
                       Transaction Type
                     </th>
                     <th scope="col fs-6" className="text-primary">
@@ -414,25 +414,25 @@ const Transaction = () => {
                     <th scope="col" className="text-primary">
                       Website
                     </th>
-                    <th scope="col text-break fs-6" className="text-primary">
+                    <th scope="col  fs-6" className="text-primary">
                       Before Bank Balance
                     </th>
-                    <th scope="col text-break fs-6" className="text-primary">
+                    <th scope="col  fs-6" className="text-primary">
                       Current Bank Balance
                     </th>
-                    <th scope="col text-break fs-6" className="text-primary">
+                    <th scope="col  fs-6" className="text-primary">
                       Before Website Balance
                     </th>
-                    <th scope="col text-break fs-6" className="text-primary">
+                    <th scope="col  fs-6" className="text-primary">
                       Current Website Balance
                     </th>
-                    <th scope="col text-break fs-6" className="text-primary">
+                    <th scope="col  fs-6" className="text-primary">
                       Before Balance
                     </th>
-                    <th scope="col text-break fs-6" className="text-primary">
+                    <th scope="col  fs-6" className="text-primary">
                       Current Balance
                     </th>
-                    <th scope="col text-break" className="text-primary">
+                    <th scope="col " className="text-primary">
                       Remarks
                     </th>
                   </tr>
@@ -449,37 +449,37 @@ const Transaction = () => {
                               "default"
                             )}{" "}
                           </td>
-                          <td className="text-break">
+                          <td className="">
                             {data.amount && (
-                              <p className="col fs-6">₹&nbsp;{data.amount}</p>
+                              <p className="col fs-6">{data.amount}</p>
                             )}
                             {data.depositAmount && (
                               <p className="col fs-6">
-                                ₹&nbsp;{data.depositAmount}
+                                {data.depositAmount}
                               </p>
                             )}
                             {data.withdrawAmount && (
                               <p className="col fs-6">
-                                ₹&nbsp;{data.withdrawAmount}
+                                {data.withdrawAmount}
                               </p>
                             )}
                           </td>
                           <td>
                             {data.transactionID && (
-                              <p className="col fs-6 text-break">
+                              <p className="col fs-6 ">
                                 {data.transactionID}
                               </p>
                             )}
                             {data.depositAmount && (
-                              <p className="col fs-6 text-break">N.A</p>
+                              <p className="col fs-6 ">N.A</p>
                             )}
                             {data.withdrawAmount && (
-                              <p className="col fs-6 text-break">N.A</p>
+                              <p className="col fs-6 ">N.A</p>
                             )}
                           </td>
                           <td>
                             {data.transactionType && (
-                              <p className="col fs-6 text-break">
+                              <p className="col fs-6 ">
                                 {data.transactionType}
                               </p>
                             )}
@@ -489,10 +489,10 @@ const Transaction = () => {
                               <p className="col fs-6">{data.paymentMethod}</p>
                             )}
                             {data.depositAmount && (
-                              <p className="col fs-6 text-break">N.A</p>
+                              <p className="col fs-6 ">N.A</p>
                             )}
                             {data.withdrawAmount && (
-                              <p className="col fs-6 text-break">N.A</p>
+                              <p className="col fs-6 ">N.A</p>
                             )}
                           </td>
                           <td>{data.subAdminName}</td>
@@ -501,10 +501,10 @@ const Transaction = () => {
                               <p className="col fs-6">{data.userId}</p>
                             )}
                             {data.depositAmount && (
-                              <p className="col fs-6 text-break">N.A</p>
+                              <p className="col fs-6 ">N.A</p>
                             )}
                             {data.withdrawAmount && (
-                              <p className="col fs-6 text-break">N.A</p>
+                              <p className="col fs-6 ">N.A</p>
                             )}
                           </td>
                           <td>
@@ -521,13 +521,13 @@ const Transaction = () => {
                             {data.beforeBalanceBankWithdraw ? (
                               <p className="col fs-6">
                                 {data.beforeBalanceBankWithdraw && (
-                                  <p className="col fs-6 text-break">
-                                    ₹&nbsp; {data.beforeBalanceBankWithdraw}
+                                  <p className="col fs-6 ">
+                                     {data.beforeBalanceBankWithdraw}
                                   </p>
                                 )}
                                 {data.beforeBalanceBankDeposit && (
-                                  <p className="col fs-6 text-break">
-                                    ₹&nbsp; {data.beforeBalanceBankDeposit}
+                                  <p className="col fs-6 ">
+                                     {data.beforeBalanceBankDeposit}
                                   </p>
                                 )}
                               </p>
@@ -539,13 +539,13 @@ const Transaction = () => {
                             {data.beforeBalanceBankWithdraw ? (
                               <p className="col fs-6">
                                 {data.currentBalanceBankWithdraw && (
-                                  <p className="col fs-6 text-break">
-                                    ₹&nbsp; {data.currentBalanceBankWithdraw}
+                                  <p className="col fs-6 ">
+                                     {data.currentBalanceBankWithdraw}
                                   </p>
                                 )}
                                 {data.currentBalanceBankDeposit && (
-                                  <p className="col fs-6 text-break">
-                                    ₹&nbsp; {data.currentBalanceBankDeposit}
+                                  <p className="col fs-6 ">
+                                     {data.currentBalanceBankDeposit}
                                   </p>
                                 )}
                               </p>
@@ -557,13 +557,13 @@ const Transaction = () => {
                             {data.beforeBalanceBankWithdraw ? (
                               <p className="col fs-6">
                                 {data.beforeBalanceWebsiteWithdraw && (
-                                  <p className="col fs-6 text-break">
-                                    ₹&nbsp; {data.beforeBalanceWebsiteWithdraw}
+                                  <p className="col fs-6 ">
+                                     {data.beforeBalanceWebsiteWithdraw}
                                   </p>
                                 )}
                                 {data.beforeBalanceWebsiteDeposit && (
-                                  <p className="col fs-6 text-break">
-                                    ₹&nbsp; {data.beforeBalanceWebsiteDeposit}
+                                  <p className="col fs-6 ">
+                                     {data.beforeBalanceWebsiteDeposit}
                                   </p>
                                 )}
                               </p>
@@ -575,13 +575,13 @@ const Transaction = () => {
                             {data.beforeBalanceBankWithdraw ? (
                               <p className="col fs-6">
                                 {data.currentBalanceWebsiteWithdraw && (
-                                  <p className="col fs-6 text-break">
-                                    ₹&nbsp; {data.currentBalanceWebsiteWithdraw}
+                                  <p className="col fs-6 ">
+                                     {data.currentBalanceWebsiteWithdraw}
                                   </p>
                                 )}
                                 {data.currentBalanceWebsiteDeposit && (
-                                  <p className="col fs-6 text-break">
-                                    ₹&nbsp; {data.currentBalanceWebsiteDeposit}
+                                  <p className="col fs-6 ">
+                                     {data.currentBalanceWebsiteDeposit}
                                   </p>
                                 )}
                               </p>
