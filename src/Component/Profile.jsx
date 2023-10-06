@@ -129,6 +129,9 @@ const Profile = () => {
                       <blink> <b className="blink_me" style={{ color: 'green' }}>{balance.LiveBalance}</b></blink>) : (<b className="blink_me" style={{ color: 'red' }}><blink>{balance.LiveBalance}</blink></b>)}
 
                   </p>
+                  <p>
+
+                  </p>
                   {/* </marquee> */}
                   <p className="text-muted ">{profiledata.email}</p>
                   <p className="text-muted mb-4 ">
@@ -174,109 +177,17 @@ const Profile = () => {
                     <br />
                     <h6>Username: &nbsp;{profiledata.userName}</h6>
                     <br />
-                    {/* <h6>Introducer Id: &nbsp;{profiledata.introducerId}</h6>
-                    <br /> */}
-                    {/* <h6>Introducer Id:&nbsp;{profiledata.introducerId}</h6> */}
-                    {/* <br /> */}
-                    {/* <div className="d-flex flex-row"> */}
-                    {/* <h6>
-                        Payment Info:&nbsp;
-                        <button
-                          style={{
-                            border: "none",
-                            backgroundColor: "white",
-                            color: "blue",
-                          }}
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalbkview"
-                        >
-                          Click Here
-                        </button>
-                      </h6> */}
-                    {/* <h6>Introducer Percentage:&nbsp;{profiledata.introducerPercentage}</h6> */}
-                    {/* </div> */}
-                    {/* <br /> */}
-                    {/* {profiledata.webSiteDetail &&
-                      profiledata.webSiteDetail.length > 0 ? (
-                      <div className="d-flex flex-row">
-                        <h6>
-                          Website Info:&nbsp;
-                          {`${profiledata.webSiteDetail}`}
-                        </h6>
-                      </div>
-                    ) : null} */}
-                    {/* <br /> */}
-                    {/* <h6>wallet: &nbsp;{profiledata.wallet}</h6>
-                    <br /> */}
+
                     <h6 className="toUppercase">Role: &nbsp;{profiledata.role}</h6>
+                    <br />
+                    <h6 className="toUppercase"> Payment Done Lifetime: &nbsp;{profiledata.balance.balance}</h6>
+                    <br />
+                    <h6 className="toUppercase"> Due Balance: &nbsp;{profiledata.balance.currentDue}</h6>
 
                   </p>
                 </div>
               </div>
-              {/* <div className="row">
-                <div className="col-md-6">
-                  <div className="card mb-4 mb-md-0">
-                    <div className="card-body">
-                      <p className="d-flex justify-content-center">
-                        <h6>Add Payment Deatils</h6>{" "}
-                      </p>
-                      <p className="d-flex justify-content-center">
-                        <button
-                          style={{ border: "none", backgroundColor: "white" }}
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalbk"
-                        >
-                          <img
-                            className="img"
-                            src={Add}
-                            style={{
-                              width: "55px",
-                              filter: "brightness(1.2) contrast(1.3)",
-                            }}
-                            onMouseOver={(e) => {
-                              e.currentTarget.style.transform = "scale(1.4)";
-                            }}
-                            onMouseOut={(e) => {
-                              e.currentTarget.style.transform = "scale(1)";
-                            }}
-                          />
-                        </button>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                <div className="col-md-6">
-                  <div className="card mb-4 mb-md-0">
-                    <div className="card-body">
-                      <p className="d-flex justify-content-center">
-                        <h6>Add Website Deatils</h6>
-                      </p>
-                      <p className="d-flex justify-content-center">
-                        <button
-                          style={{ border: "none", backgroundColor: "white" }}
-                          data-bs-toggle="modal"
-                          data-bs-target="#modalweb"
-                        >
-                          <img
-                            className="img"
-                            src={Add}
-                            style={{
-                              width: "55px",
-                              filter: "brightness(1.2) contrast(1.3)",
-                            }}
-                            onMouseOver={(e) => {
-                              e.currentTarget.style.transform = "scale(1.4)";
-                            }}
-                            onMouseOut={(e) => {
-                              e.currentTarget.style.transform = "scale(1)";
-                            }}
-                          />
-                        </button>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-              </div> */}
+
             </div>
           </div>
         </div>
