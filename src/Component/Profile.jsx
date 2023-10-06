@@ -97,6 +97,11 @@ const Profile = () => {
                       <b>My Network</b>
                     </Link>
                   </li>
+                  <li className="breadcrumb-item">
+                    <Link to="/statement">
+                      <b>Statement</b>
+                    </Link>
+                  </li>
                   {/* <li className="breadcrumb-item active" aria-current="page">
                     Log Out
                   </li> */}
@@ -119,7 +124,7 @@ const Profile = () => {
                   </h5>
                   {/* <marquee class="news-content"> */}
                   <p className="text-muted">
-                    Live Balance :{" "}
+                    Total Profit[Lifetime] :{" "}
                     {balance.LiveBalance > 0 ? (
                       <blink> <b className="blink_me" style={{ color: 'green' }}>{balance.LiveBalance}</b></blink>) : (<b className="blink_me" style={{ color: 'red' }}><blink>{balance.LiveBalance}</blink></b>)}
 

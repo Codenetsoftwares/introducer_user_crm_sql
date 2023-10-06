@@ -11,6 +11,7 @@ import Transaction from "./Component/Transaction";
 import ForPass from "./Component/ForPass";
 import MyNetwork from "./Component/MyNetwork";
 import IndividualNetwork from "./Component/IndividualNetwork";
+import Statement from "./Component/Statement";
 
 function App() {
   return (
@@ -20,7 +21,7 @@ function App() {
           <Routes>
             <Route index element={<Login />}></Route>
             {/* <Route path="register" element={<Register />} /> */}
-            <Route path="forpass" element={<ForPass/>} />
+            <Route path="forpass" element={<ForPass />} />
 
             <Route
               path="welcome"
@@ -57,16 +58,24 @@ function App() {
               }
             />
 
-             <Route
+            <Route
               path="transaction"
               element={
                 <RequireAuth>
                   <Transaction />
                 </RequireAuth>
               }
-            /> 
+            />
+            <Route
+              path="statement"
+              element={
+                <RequireAuth>
+                  <Statement />
+                </RequireAuth>
+              }
+            />
 
-            
+
           </Routes>
         </BrowserRouter>
       </AuthProvider>
