@@ -9,7 +9,7 @@ import Modal from "./Modal";
 import ModalBank from "./ModalBank";
 import AccountsService from "../Services/AccountsService";
 import ModalBankView from "./ModalBankView";
-import './Profile.css'
+import "./Profile.css";
 
 const Profile = () => {
   const auth = useAuth();
@@ -39,7 +39,9 @@ const Profile = () => {
   console.log("This is Profile Data =>>>", profiledata);
 
   useEffect(() => {
-    AccountsService.liveBalance(id, auth.user).then((res) => setBalance(res.data));
+    AccountsService.liveBalance(id, auth.user).then((res) =>
+      setBalance(res.data)
+    );
   }, [auth, id]);
   console.log("This is Live Balance=>>>", balance);
 
@@ -81,8 +83,8 @@ const Profile = () => {
                 aria-label="breadcrumb"
                 className="bg-light rounded-3 p-3 mb-4"
               >
-                <ul className="breadcrumb mb-0">
-                  <li className="breadcrumb-item">
+                <ul className="breadcrumb mb-0 d-flex justify-content-between">
+                  <li className="">
                     <a href="#">
                       <b>My Profile</b>
                     </a>
@@ -92,12 +94,12 @@ const Profile = () => {
                       <b>My Transactions</b>
                     </Link>
                   </li> */}
-                  <li className="breadcrumb-item">
+                  <li className="">
                     <Link to="/mynetworks">
                       <b>My Network</b>
                     </Link>
                   </li>
-                  <li className="breadcrumb-item">
+                  <li className="">
                     <Link to="/statement">
                       <b>Statement</b>
                     </Link>
@@ -126,12 +128,19 @@ const Profile = () => {
                   <p className="text-muted">
                     Total Profit[Lifetime] :{" "}
                     {balance.LiveBalance > 0 ? (
-                      <blink> <b className="blink_me" style={{ color: 'green' }}>{balance.LiveBalance}</b></blink>) : (<b className="blink_me" style={{ color: 'red' }}><blink>{balance.LiveBalance}</blink></b>)}
-
+                      <blink>
+                        {" "}
+                        <b className="blink_me" style={{ color: "green" }}>
+                          {balance.LiveBalance}
+                        </b>
+                      </blink>
+                    ) : (
+                      <b className="blink_me" style={{ color: "red" }}>
+                        <blink>{balance.LiveBalance}</blink>
+                      </b>
+                    )}
                   </p>
-                  <p>
-
-                  </p>
+                  <p></p>
                   {/* </marquee> */}
                   <p className="text-muted ">{profiledata.email}</p>
                   <p className="text-muted mb-4 ">
@@ -178,16 +187,22 @@ const Profile = () => {
                     <h6>Username: &nbsp;{profiledata.userName}</h6>
                     <br />
 
-                    <h6 className="toUppercase">Role: &nbsp;{profiledata.role}</h6>
+                    <h6 className="toUppercase">
+                      Role: &nbsp;{profiledata.role}
+                    </h6>
                     <br />
-                    <h6 className="toUppercase"> Payment Done Lifetime: &nbsp;{profiledata.balance}</h6>
+                    <h6 className="toUppercase">
+                      {" "}
+                      Payment Done Lifetime: &nbsp;{profiledata.balance}
+                    </h6>
                     <br />
-                    <h6 className="toUppercase"> Due Balance: &nbsp;{profiledata.currentDue}</h6>
-
+                    <h6 className="toUppercase">
+                      {" "}
+                      Current Due Balance: &nbsp;{profiledata.currentDue}
+                    </h6>
                   </p>
                 </div>
               </div>
-
             </div>
           </div>
         </div>
