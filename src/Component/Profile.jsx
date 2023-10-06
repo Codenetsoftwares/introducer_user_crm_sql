@@ -180,9 +180,9 @@ const Profile = () => {
 
                     <h6 className="toUppercase">Role: &nbsp;{profiledata.role}</h6>
                     <br />
-                    <h6 className="toUppercase"> Payment Done Lifetime: &nbsp;{profiledata.balance.balance}</h6>
+                    <h6 className="toUppercase"> Payment Done Lifetime: &nbsp;{profiledata.balance}</h6>
                     <br />
-                    <h6 className="toUppercase"> Due Balance: &nbsp;{profiledata.balance.currentDue}</h6>
+                    <h6 className="toUppercase"> Due Balance: &nbsp;{profiledata.currentDue}</h6>
 
                   </p>
                 </div>
