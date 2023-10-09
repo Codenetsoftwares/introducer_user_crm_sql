@@ -89,7 +89,7 @@ const Profile = () => {
                       <b>My Profile</b>
                     </a>
                   </li>
-                
+
                   <li className="">
                     <Link to="/mynetworks">
                       <b>My Network</b>
@@ -100,7 +100,6 @@ const Profile = () => {
                       <b>Statement</b>
                     </Link>
                   </li>
-                 
                 </ul>
               </nav>
             </div>
@@ -120,7 +119,7 @@ const Profile = () => {
                   </h5>
                   {/* <marquee class="news-content"> */}
                   <p className="text-muted">
-                    Total Profit[Lifetime] :{" "}
+                    Total Profit Lifetime :{" "}
                     {balance.LiveBalance > 0 ? (
                       <blink>
                         {" "}
@@ -169,8 +168,8 @@ const Profile = () => {
               </div>
               {/* ... Other content ... */}
             </div>
-            <div className="col-lg-8">
-              <div className="card mb-4">
+            <div className="col-lg-8" >
+              <div className="card mb-4" style={{ height: "31.8rem" }}>
                 <div className="card-body">
                   <p>
                     <h6>
