@@ -10,6 +10,7 @@ import ModalBank from "./ModalBank";
 import AccountsService from "../Services/AccountsService";
 import ModalBankView from "./ModalBankView";
 import "./Profile.css";
+import Editicon from "../Assets/Editpas.png";
 
 const Profile = () => {
   const auth = useAuth();
@@ -63,6 +64,10 @@ const Profile = () => {
   // console.log("This is profile data ==>>>", profiledata);
   const handeleditprofile = () => {
     navigate(`/editprofile/${profiledata._id}`);
+  };
+
+  const handelresetpass = () => {
+    navigate("/Resetpasword");
   };
   return (
     <div
@@ -168,7 +173,7 @@ const Profile = () => {
               </div>
               {/* ... Other content ... */}
             </div>
-            <div className="col-lg-8" >
+            <div className="col-lg-8">
               <div className="card mb-4" style={{ height: "31.8rem" }}>
                 <div className="card-body">
                   <p>
@@ -192,6 +197,22 @@ const Profile = () => {
                     <h6 className="toUppercase">
                       {" "}
                       Current Due Balance: &nbsp;{profiledata.currentDue}
+                    </h6>
+                    <br />
+                    <h6>
+                      Password: &nbsp; ********{" "}
+                      <img
+                        src={Editicon}
+                        style={{ width: "25px" }}
+                        onClick={handelresetpass}
+                        title="Reset"
+                        onMouseOver={(e) => {
+                          e.currentTarget.style.transform = "scale(1.4)";
+                        }}
+                        onMouseOut={(e) => {
+                          e.currentTarget.style.transform = "scale(1)";
+                        }}
+                      />
                     </h6>
                   </p>
                 </div>
