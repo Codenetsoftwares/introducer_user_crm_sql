@@ -12,6 +12,7 @@ import ForPass from "./Component/ForPass";
 import MyNetwork from "./Component/MyNetwork";
 import IndividualNetwork from "./Component/IndividualNetwork";
 import Statement from "./Component/Statement";
+import PasswordReset from "./Component/PasswordReset";
 
 function App() {
   return (
@@ -75,7 +76,16 @@ function App() {
               }
             />
 
-
+            <Route
+              path="Resetpasword"
+              element={
+                <RequireAuth>
+                 
+                 <PasswordReset/>
+                 
+                </RequireAuth>
+              }
+            />
           </Routes>
         </BrowserRouter>
       </AuthProvider>
