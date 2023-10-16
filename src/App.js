@@ -33,7 +33,7 @@ function App() {
               }
             />
             <Route
-              path="mynetworks"
+              path="mynetworks/:id"
               element={
                 <RequireAuth>
                   <MyNetwork />
@@ -80,9 +80,9 @@ function App() {
               path="Resetpasword"
               element={
                 <RequireAuth>
-                 
-                 <PasswordReset/>
-                 
+
+                  <PasswordReset />
+
                 </RequireAuth>
               }
             />

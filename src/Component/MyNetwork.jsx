@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react'
 import AccountsService from '../Services/AccountsService';
 import { useAuth } from '../Utils/Auth';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 const MyNetwork = () => {
-
+    const { id } = useParams()
     const [network, setNetwork] = useState([]);
     const auth = useAuth();
-
+    console.log("first",id)
     useEffect(() => {
-        AccountsService.getIntroducerUser(auth.user)
+        AccountsService.getIntroducerUser(id, auth.user)
             .then((res) => {
                 console.log(res.data)
                 setNetwork(res.data)
