@@ -76,10 +76,10 @@ class AccountsService {
     });
   }
 
-  getIntroducerUser(user) {
+  getIntroducerUser(id, user) {
     return axios({
       method: "get",
-      url: `${API_HOST}/api/list-introducer-user`,
+      url: `${API_HOST}/api/list-introducer-user/${id}`,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },

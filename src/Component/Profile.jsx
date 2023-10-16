@@ -96,7 +96,7 @@ const Profile = () => {
                   </li>
 
                   <li className="">
-                    <Link to="/mynetworks">
+                    <Link to={`/mynetworks/${auth.userName}`}>
                       <b>My Network</b>
                     </Link>
                   </li>
