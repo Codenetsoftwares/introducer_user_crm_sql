@@ -207,7 +207,7 @@ const IndividualNetwork = () => {
                               <thead className="table-success">
                                 <tr align="center" bgcolor="green" className="fs-6">
                                   <th scope="col fs-6" className="text-primary">
-                                    Date <br />&<br /> Time
+                                    Date & Time
                                   </th>
                                   <th scope="col  fs-6" className="text-primary">
                                     Amount
@@ -246,25 +246,44 @@ const IndividualNetwork = () => {
                                       <tr align="center" className="fs-6">
                                         <td>
                                           {" "}
-                                          {new Date(data.createdAt).toLocaleString(
-                                            "default"
-                                          )}{" "}
+                                          {new Date(
+                                            data.createdAt
+                                          ).toLocaleString("default")}{" "}
                                         </td>
+
                                         <td className="">
-                                          {data.amount && (
-                                            <p className="col fs-6">{data.amount}</p>
-                                          )}
-                                          {data.depositAmount && (
-                                            <p className="col fs-6">
-                                             {data.depositAmount}
-                                            </p>
-                                          )}
-                                          {data.withdrawAmount && (
-                                            <p className="col fs-6">
-                                              {data.withdrawAmount}
-                                            </p>
-                                          )}
+                                          <p
+                                            className={`col fs-6 text-break ${
+                                              data.transactionType.includes(
+                                                "Manual-Website-Withdraw"
+                                              ) ||
+                                              data.transactionType.includes(
+                                                "Manual-Bank-Withdraw"
+                                              ) ||
+                                              data.transactionType ===
+                                                "Withdraw"
+                                                ? "text-red"
+                                                : "text-green"
+                                            }`}
+                                          >
+                                            {data.amount && (
+                                              <p className="col fs-6">
+                                                {data.amount}
+                                              </p>
+                                            )}
+                                            {data.depositAmount && (
+                                              <p className="col fs-6">
+                                                {data.depositAmount}
+                                              </p>
+                                            )}
+                                            {data.withdrawAmount && (
+                                              <p className="col fs-6">
+                                                {data.withdrawAmount}
+                                              </p>
+                                            )}
+                                          </p>
                                         </td>
+
                                         <td>
                                           {data.transactionID && (
                                             <p className="col fs-6 ">
@@ -279,15 +298,30 @@ const IndividualNetwork = () => {
                                           )}
                                         </td>
                                         <td>
-                                          {data.transactionType && (
-                                            <p className="col fs-6 ">
+                                          {data?.transactionType && (
+                                            <p
+                                              className={`col fs-6 text-break ${
+                                                data.transactionType.includes(
+                                                  "Manual-Website-Withdraw"
+                                                ) ||
+                                                data.transactionType.includes(
+                                                  "Manual-Bank-Withdraw"
+                                                ) ||
+                                                data.transactionType ===
+                                                  "Withdraw"
+                                                  ? "text-red"
+                                                  : "text-green"
+                                              }`}
+                                            >
                                               {data.transactionType}
                                             </p>
                                           )}
                                         </td>
                                         <td>
                                           {data.paymentMethod && (
-                                            <p className="col fs-6">{data.paymentMethod}</p>
+                                            <p className="col fs-6">
+                                              {data.paymentMethod}
+                                            </p>
                                           )}
                                           {data.depositAmount && (
                                             <p className="col fs-6 ">N.A</p>
@@ -321,12 +355,16 @@ const IndividualNetwork = () => {
                                         </td> */}
                                         <td>
                                           <p className="col fs-6">
-                                            {data.bankName ? data.bankName : "N.A"}
+                                            {data.bankName
+                                              ? data.bankName
+                                              : "N.A"}
                                           </p>
                                         </td>
                                         <td>
                                           <p className="col fs-6">
-                                            {data.websiteName ? data.websiteName : "N.A"}
+                                            {data.websiteName
+                                              ? data.websiteName
+                                              : "N.A"}
                                           </p>
                                         </td>
                                       </tr>
