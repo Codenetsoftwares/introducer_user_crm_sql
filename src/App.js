@@ -42,7 +42,7 @@ function App() {
             />
 
             <Route
-              path="mynetworks/:id"
+              path="individualNetwork/:id"
               element={
                 <RequireAuth>
                   <IndividualNetwork />
@@ -80,9 +80,7 @@ function App() {
               path="Resetpasword"
               element={
                 <RequireAuth>
-
                   <PasswordReset />
-
                 </RequireAuth>
               }
             />

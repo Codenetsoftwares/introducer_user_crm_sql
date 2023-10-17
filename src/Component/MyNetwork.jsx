@@ -30,12 +30,20 @@ const MyNetwork = () => {
                     {
                         network.map((userDetails, i) => {
                             return (
-                                <tr>
-                                    <th scope="row">{i + 1}</th>
-                                    <td>{userDetails.firstname} {userDetails.lastname}</td>
-                                    <td><Link to={`/mynetworks/${userDetails._id}`}>Details</Link></td>
-                                </tr>
-                            )
+                              <tr>
+                                <th scope="row">{i + 1}</th>
+                                <td>
+                                  {userDetails.firstname} {userDetails.lastname}
+                                </td>
+                                <td>
+                                  <Link
+                                    to={`/individualNetwork/${userDetails._id}`}
+                                  >
+                                    Details
+                                  </Link>
+                                </td>
+                              </tr>
+                            );
                         })
                     }
 
