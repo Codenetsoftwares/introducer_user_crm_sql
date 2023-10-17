@@ -150,7 +150,7 @@ const Profile = () => {
                         borderRadius: "15px",
                       }}
                     />
-                    &nbsp;Verified By Happy Wave
+                    &nbsp;Verified By Obhisab.com
                   </p>
                   <div className="d-flex justify-content-center mb-2 pt-3">
                     <button
