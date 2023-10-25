@@ -33,7 +33,7 @@ const MyNetwork = () => {
                               <tr>
                                 <th scope="row">{i + 1}</th>
                                 <td>
-                                  {userDetails.firstname} {userDetails.lastname}
+                                  {userDetails.userName} 
                                 </td>
                                 <td>
                                   <Link
