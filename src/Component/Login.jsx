@@ -6,6 +6,7 @@ import { Link } from "react-router-dom";
 import AccountsService from "../Services/AccountsService";
 import { useNavigate } from "react-router-dom";
 import { useAuth } from "../Utils/Auth";
+import { toast } from "react-toastify";
 const Login = () => {
   const auth = useAuth();
   const navigate = useNavigate();
@@ -40,11 +41,8 @@ const Login = () => {
         }
       })
       .catch((err) => {
-        if (err.response && err.response.data) {
-          console.log(err.response.data.message);
-        } else {
-          console.error("Error occurred:", err);
-        }
+        console.log(err)
+        alert(err.response.data.message)
       });
   };
   // const handleSubmit = (e) => {
@@ -211,9 +209,8 @@ const Login = () => {
             </li> */}
             <li className="nav-item text-center" style={{ width: "33%" }}>
               <a
-                className={`nav-link ${
-                  activeTab === 3 ? "active" : ""
-                } text-black fw-bold`}
+                className={`nav-link ${activeTab === 3 ? "active" : ""
+                  } text-black fw-bold`}
                 data-toggle="tab"
                 aria-selected={activeTab === 3}
                 onClick={() => handleClick(3)}
