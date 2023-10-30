@@ -11,6 +11,7 @@ import AccountsService from "../Services/AccountsService";
 import ModalBankView from "./ModalBankView";
 import "./Profile.css";
 import Editicon from "../Assets/Editpas.png";
+import WeeklyReport from "./Modal/WeeklyReport";
 
 const Profile = () => {
   const auth = useAuth();
@@ -66,6 +67,14 @@ const Profile = () => {
     navigate(`/editprofile/${profiledata._id}`);
   };
 
+  const handleStatement = () => {
+    navigate(`/statement`);
+  };
+
+  const handleMyNetwork = () => {
+    navigate(`/mynetworks/${auth.userName}`);
+  };
+
   const handelresetpass = () => {
     navigate("/Resetpasword");
   };
@@ -89,22 +98,27 @@ const Profile = () => {
                 className="bg-light rounded-3 p-3 mb-4"
               >
                 <ul className="breadcrumb mb-0 d-flex justify-content-between">
-                  <li className="">
-                    <a href="#">
-                      <b>My Profile</b>
-                    </a>
-                  </li>
 
-                  <li className="">
-                    <Link to={`/mynetworks/${auth.userName}`}>
-                      <b>My Network</b>
-                    </Link>
-                  </li>
-                  <li className="">
-                    <Link to="/statement">
-                      <b>Statement</b>
-                    </Link>
-                  </li>
+                  <button type="button" class="btn" >
+                    <b>My Profile</b>
+                  </button>
+
+
+
+                  <button type="button" class="btn" onClick={handleMyNetwork}>
+                    <b>My Network</b>
+                  </button>
+
+
+                  <button type="button" class="btn " data-toggle="modal" data-target="#weeklyReport">
+                    <b>weekly Report</b>
+                  </button>
+
+
+                  <button type="button" class="btn" onClick={handleStatement}>
+                    <b>Statement</b>
+                  </button>
+
                 </ul>
               </nav>
             </div>
@@ -124,17 +138,17 @@ const Profile = () => {
                   </h5>
                   {/* <marquee class="news-content"> */}
                   <p className="text-muted">
-                    Total Profit Lifetime :{" "}
-                    {balance.LiveBalance > 0 ? (
+                    Current Due :{" "}
+                    {profiledata.currentDue > 0 ? (
                       <blink>
                         {" "}
                         <b className="blink_me" style={{ color: "green" }}>
-                          {balance.LiveBalance}
+                          {profiledata.currentDue}
                         </b>
                       </blink>
                     ) : (
                       <b className="blink_me" style={{ color: "red" }}>
-                        <blink>{balance.LiveBalance}</blink>
+                        <blink>{profiledata.currentDue}</blink>
                       </b>
                     )}
                   </p>
@@ -188,6 +202,10 @@ const Profile = () => {
                     <h6 className="toUppercase">
                       Role: &nbsp;{profiledata.role}
                     </h6>
+                    <br /><h6 className="toUppercase">
+                      {" "}
+                      Live Balance: &nbsp;{balance.LiveBalance}
+                    </h6>
                     <br />
                     <h6 className="toUppercase">
                       {" "}
@@ -196,7 +214,7 @@ const Profile = () => {
                     <br />
                     <h6 className="toUppercase">
                       {" "}
-                      Current Due Balance: &nbsp;{profiledata.currentDue}
+                      Current Due: &nbsp;{profiledata.currentDue}
                     </h6>
                     <br />
                     <h6>
@@ -224,6 +242,7 @@ const Profile = () => {
       <ModalBankView />
       <Modal />
       <ModalBank />
+      <WeeklyReport />
     </div>
   );
 };

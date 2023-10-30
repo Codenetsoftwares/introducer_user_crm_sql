@@ -14,6 +14,7 @@ import IndividualNetwork from "./Component/IndividualNetwork";
 import Statement from "./Component/Statement";
 import PasswordReset from "./Component/PasswordReset";
 
+
 function App() {
   return (
     <React.Fragment>
@@ -75,7 +76,6 @@ function App() {
                 </RequireAuth>
               }
             />
-
             <Route
               path="Resetpasword"
               element={
