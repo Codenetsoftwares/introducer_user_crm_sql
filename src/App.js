@@ -13,6 +13,8 @@ import MyNetwork from "./Component/MyNetwork";
 import IndividualNetwork from "./Component/IndividualNetwork";
 import Statement from "./Component/Statement";
 import PasswordReset from "./Component/PasswordReset";
+import WeeklyReport from "./Component/Modal/WeeklyReport";
+
 
 function App() {
   return (
@@ -75,7 +77,14 @@ function App() {
                 </RequireAuth>
               }
             />
-
+            <Route
+              path="weekly"
+              element={
+                <RequireAuth>
+                  <WeeklyReport/>
+                </RequireAuth>
+              }
+            />
             <Route
               path="Resetpasword"
               element={

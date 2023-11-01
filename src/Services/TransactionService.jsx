@@ -12,5 +12,17 @@ class TransactionService {
       },
     });
   }
+
+  getIntroducerUserData(id, user) {
+    console.log(id)
+    return axios({
+      method: "get",
+      url: `${API_HOST}/api/introducer-user/accountsummary/${id}`,
+      headers: {
+        Authorization: `Bearer ${user.token}`,
+      },
+    });
+  }
+
 }
 export default new TransactionService();
