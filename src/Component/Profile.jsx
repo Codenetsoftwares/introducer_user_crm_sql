@@ -99,23 +99,23 @@ const Profile = () => {
               >
                 <ul className="breadcrumb mb-0 d-flex justify-content-between">
 
-                  <button type="button" class="btn" >
+                  <button type="button" className="btn border-0" >
                     <b>My Profile</b>
                   </button>
 
 
 
-                  <button type="button" class="btn" onClick={handleMyNetwork}>
+                  <button type="button" className="btn border-0" onClick={handleMyNetwork}>
                     <b>My Network</b>
                   </button>
 
 
-                  <button type="button" class="btn " data-toggle="modal" data-target="#weeklyReport">
+                  <button type="button" className="btn border-0" data-bs-toggle="modal" data-bs-target="#weeklyreport">
                     <b>weekly Report</b>
                   </button>
 
 
-                  <button type="button" class="btn" onClick={handleStatement}>
+                  <button type="button" className="btn border-0" onClick={handleStatement}>
                     <b>Statement</b>
                   </button>
 
@@ -136,7 +136,7 @@ const Profile = () => {
                   <h5 className="my-3 pt-3">
                     Hi!&nbsp;{profiledata.firstname}
                   </h5>
-                  {/* <marquee class="news-content"> */}
+                  {/* <marquee className="news-content"> */}
                   <p className="text-muted">
                     Current Due :{" "}
                     {profiledata.currentDue > 0 ? (
@@ -239,10 +239,10 @@ const Profile = () => {
           </div>
         </div>
       </section>
-      <ModalBankView />
+      {/* <ModalBankView />
       <Modal />
-      <ModalBank />
-      <WeeklyReport />
+      <ModalBank /> */}
+      <WeeklyReport  />
     </div>
   );
 };
