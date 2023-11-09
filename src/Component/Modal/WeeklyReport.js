@@ -46,15 +46,33 @@ const WeeklyReport = () => {
         SetStartDatesetValue(new Date());
         setEndDateValue(new Date())
         setDocumentView(accountView)
+        setToggle(true);
     }
     console.log(documentView)
+
+    const flattenedData = documentView.map(transaction => ({
+        Date: transaction.createdAt,
+        AccountNumber: transaction.accountNumber,
+        BankName: transaction.bankName,
+        WebsiteName: transaction.websiteName,
+        Amount: transaction.amount,
+        PaymentMethod: transaction.paymentMethod,
+        TransactionID: transaction.transactionID,
+        TransactionType: transaction.transactionType,
+        Introducer: transaction.introducerUserName,
+        SubAdminName: transaction.subAdminName,
+        UserName: transaction.userName,
+        Remarks: transaction.remarks,
+    }));
+    console.log("flattenedData", flattenedData);
+
     return (
         <div className="modal fade" id="weeklyreport" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenterTitle" aria-hidden="true">
             <div className="modal-dialog modal-dialog-centered" role="document">
                 <div className="modal-content">
                     <div className="modal-header">
                         <h5 className="modal-title" id="exampleModalLongTitle">WEEKLY REPORT</h5>
-                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        <button type="button" className="btn-close" data-bs-dismiss="modal" aria-label="Close" onClick={handleReset}></button>
                     </div>
                     <div className="modal-body">
                         <div className='mb-2'>
@@ -79,7 +97,7 @@ const WeeklyReport = () => {
                         </div>
 
                         <div className="d-flex col justify-content-center">
-                            
+
                             <div className="mx-2">
                                 <button
                                     type="button"
@@ -97,27 +115,27 @@ const WeeklyReport = () => {
                             </div> */}
                         </div>
                     </div>
-                   
-                  
+
+
 
                     <div className="modal-footer">
 
-                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                        <button type="button" className="btn btn-secondary" data-bs-dismiss="modal" onClick={handleReset}>Close</button>
                         {toggle ? (<div className="mx-2">
                             <button
                                 type="button"
-                                className="btn btn-dark"
+                                class="btn btn-info"
                                 onClick={handleFilter}
                             >
-                                Filter
+                                Proceed
                             </button>
                         </div>) : (<div data-bs-dismiss="modal">
-                            {documentView && <CSVLink data={documentView} className="btn btn-primary">
+                            {flattenedData && <CSVLink data={flattenedData} className="btn btn-primary" onClick={handleReset}>
                                 Download Data
                             </CSVLink>}
                         </div>)}
-                        
-                       
+
+
                     </div>
                 </div>
             </div>

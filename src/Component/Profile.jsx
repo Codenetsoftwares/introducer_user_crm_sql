@@ -143,12 +143,12 @@ const Profile = () => {
                       <blink>
                         {" "}
                         <b className="blink_me" style={{ color: "green" }}>
-                          {profiledata.currentDue}
+                          {parseInt(profiledata.currentDue)}
                         </b>
                       </blink>
                     ) : (
                       <b className="blink_me" style={{ color: "red" }}>
-                        <blink>{profiledata.currentDue}</blink>
+                        <blink>{parseInt(profiledata.currentDue)}</blink>
                       </b>
                     )}
                   </p>
@@ -204,17 +204,17 @@ const Profile = () => {
                     </h6>
                     <br /><h6 className="toUppercase">
                       {" "}
-                      Live Balance: &nbsp;{balance.LiveBalance}
+                      Live Balance: &nbsp;{parseInt(balance.LiveBalance)}
                     </h6>
                     <br />
                     <h6 className="toUppercase">
                       {" "}
-                      Payment Done Lifetime: &nbsp;{profiledata.balance}
+                      Payment Done Lifetime: &nbsp;{parseInt(profiledata.balance)}
                     </h6>
                     <br />
                     <h6 className="toUppercase">
                       {" "}
-                      Current Due: &nbsp;{profiledata.currentDue}
+                      Current Due: &nbsp;{parseInt(profiledata.currentDue)}
                     </h6>
                     <br />
                     <h6>
@@ -242,7 +242,7 @@ const Profile = () => {
       {/* <ModalBankView />
       <Modal />
       <ModalBank /> */}
-      <WeeklyReport  />
+      <WeeklyReport />
     </div>
   );
 };

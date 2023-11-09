@@ -14,8 +14,8 @@ const WeeklyReport = () => {
     useEffect((() => {
         TransactionService.getIntroducerUserData(auth.user.userName, auth.user).then((res) => (setDocumentView(res.data.transaction), setAccountView(res.data.transaction))).catch((err) => (setDocumentView([])))
     }), [auth])
+    console.log("====>", documentView)
 
-    console.log(documentView)
     const handleStartDatevalue = (e) => {
         SetStartDatesetValue(moment(e));
     };
@@ -35,6 +35,7 @@ const WeeklyReport = () => {
             return transactionDate >= sdate && transactionDate <= edate;
         });
         setDocumentView(filteredDocuments)
+
     }
 
     const handleReset = () => {
@@ -43,6 +44,9 @@ const WeeklyReport = () => {
         setDocumentView(accountView)
     }
     console.log(documentView)
+
+
+
     return (
         <div
             className="card card-body rounded-1 "
@@ -88,7 +92,7 @@ const WeeklyReport = () => {
                         </button>
                     </div>
                     <div className="mx-2">
-                        {documentView && <CSVLink data={documentView} className="btn btn-success">
+                        {documentView && <CSVLink data={flattenedData} className="btn btn-success">
                             Download Data
                         </CSVLink>}
 
