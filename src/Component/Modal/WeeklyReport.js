@@ -12,6 +12,7 @@ const WeeklyReport = () => {
     const [endDatevalue, setEndDateValue] = useState(new Date());
     const [documentView, setDocumentView] = useState([]);
     const [accountView, setAccountView] = useState([]);
+    const [toggle, setToggle] = useState(true);
 
 
     useEffect((() => {
@@ -38,6 +39,7 @@ const WeeklyReport = () => {
             return transactionDate >= sdate && transactionDate <= edate;
         });
         setDocumentView(filteredDocuments)
+        setToggle(!toggle);
     }
 
     const handleReset = () => {
@@ -77,15 +79,7 @@ const WeeklyReport = () => {
                         </div>
 
                         <div className="d-flex col justify-content-center">
-                            <div className="mx-2">
-                                <button
-                                    type="button"
-                                    className="btn btn-dark"
-                                    onClick={handleFilter}
-                                >
-                                    Filter
-                                </button>
-                            </div>
+                            
                             <div className="mx-2">
                                 <button
                                     type="button"
@@ -103,13 +97,27 @@ const WeeklyReport = () => {
                             </div> */}
                         </div>
                     </div>
+                   
+                  
+
                     <div className="modal-footer">
+
                         <button type="button" className="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <div data-bs-dismiss="modal">
+                        {toggle ? (<div className="mx-2">
+                            <button
+                                type="button"
+                                className="btn btn-dark"
+                                onClick={handleFilter}
+                            >
+                                Filter
+                            </button>
+                        </div>) : (<div data-bs-dismiss="modal">
                             {documentView && <CSVLink data={documentView} className="btn btn-primary">
                                 Download Data
                             </CSVLink>}
-                        </div>
+                        </div>)}
+                        
+                       
                     </div>
                 </div>
             </div>
