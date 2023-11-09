@@ -11,6 +11,11 @@ const WeeklyReport = () => {
     const [documentView, setDocumentView] = useState([]);
 
 
+    useEffect((() => {
+        TransactionService.getIntroducerUserData(auth.user.userName, auth.user).then((res) => (setDocumentView(res.data.transaction), setAccountView(res.data.transaction))).catch((err) => (setDocumentView([])))
+    }), [auth])
+
+    console.log(documentView)
     const handleStartDatevalue = (e) => {
         SetStartDatesetValue(moment(e));
     };
@@ -37,6 +42,7 @@ const WeeklyReport = () => {
         setEndDateValue(new Date())
         setDocumentView(accountView)
     }
+    console.log(documentView)
     return (
         <div
             className="card card-body rounded-1 "
