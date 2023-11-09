@@ -20,11 +20,22 @@ const WeeklyReport = () => {
     };
 
     const handleFilter = () => {
-
+        const sdate = moment(startDatevalue).toDate();
+        const edate = moment(endDatevalue).toDate();
+        sdate.setHours(0, 0, 0);
+        edate.setHours(23, 59, 59);
+        console.log("==>", sdate, "===>", edate)
+        let filteredDocuments = documentView.filter((data) => {
+            const transactionDate = new Date(data.createdAt);
+            return transactionDate >= sdate && transactionDate <= edate;
+        });
+        setDocumentView(filteredDocuments)
     }
 
     const handleReset = () => {
-
+        SetStartDatesetValue(new Date());
+        setEndDateValue(new Date())
+        setDocumentView(accountView)
     }
     return (
         <div
