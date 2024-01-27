@@ -72,7 +72,7 @@ const Profile = () => {
   };
 
   const handleMyNetwork = () => {
-    navigate(`/mynetworks/${auth.userName}`);
+    navigate(`/mynetworks`);
   };
 
   const handelresetpass = () => {
@@ -98,27 +98,34 @@ const Profile = () => {
                 className="bg-light rounded-3 p-3 mb-4"
               >
                 <ul className="breadcrumb mb-0 d-flex justify-content-between">
-
-                  <button type="button" className="btn border-0" >
+                  <button type="button" className="btn border-0">
                     <b>My Profile</b>
                   </button>
 
-
-
-                  <button type="button" className="btn border-0" onClick={handleMyNetwork}>
+                  <button
+                    type="button"
+                    className="btn border-0"
+                    onClick={handleMyNetwork}
+                  >
                     <b>My Network</b>
                   </button>
 
-
-                  <button type="button" className="btn border-0" data-bs-toggle="modal" data-bs-target="#weeklyreport">
-                    <b>weekly Report</b>
+                  <button
+                    type="button"
+                    className="btn border-0"
+                    data-bs-toggle="modal"
+                    data-bs-target="#weeklyreport"
+                  >
+                    <b>Weekly Report</b>
                   </button>
 
-
-                  <button type="button" className="btn border-0" onClick={handleStatement}>
+                  <button
+                    type="button"
+                    className="btn border-0"
+                    onClick={handleStatement}
+                  >
                     <b>Statement</b>
                   </button>
-
                 </ul>
               </nav>
             </div>
@@ -202,14 +209,16 @@ const Profile = () => {
                     <h6 className="toUppercase">
                       Role: &nbsp;{profiledata.role}
                     </h6>
-                    <br /><h6 className="toUppercase">
+                    <br />
+                    <h6 className="toUppercase">
                       {" "}
                       Live Balance: &nbsp;{parseInt(balance.LiveBalance)}
                     </h6>
                     <br />
                     <h6 className="toUppercase">
                       {" "}
-                      Payment Done Lifetime: &nbsp;{parseInt(profiledata.balance)}
+                      Payment Done Lifetime: &nbsp;
+                      {parseInt(profiledata.balance)}
                     </h6>
                     <br />
                     <h6 className="toUppercase">
