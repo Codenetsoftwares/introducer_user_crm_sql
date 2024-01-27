@@ -35,7 +35,7 @@ function App() {
               }
             />
             <Route
-              path="mynetworks/:id"
+              path="mynetworks"
               element={
                 <RequireAuth>
                   <MyNetwork />
