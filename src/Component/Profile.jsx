@@ -16,7 +16,7 @@ import WeeklyReport from "./Modal/WeeklyReport";
 const Profile = () => {
   const auth = useAuth();
   const navigate = useNavigate();
-  const id = auth.user.id;
+  const id = auth.user.intro_id;
   console.log("This is Auth=>", auth);
   const [userAuth, setUserAuth] = useState([]);
   const [profiledata, setProfiledata] = useState([]);
@@ -63,8 +63,9 @@ const Profile = () => {
   // }, [auth, id]);
 
   // console.log("This is profile data ==>>>", profiledata);
+
   const handeleditprofile = () => {
-    navigate(`/editprofile/${profiledata._id}`);
+    navigate(`/editprofile/${profiledata.intro_id}`);
   };
 
   const handleStatement = () => {

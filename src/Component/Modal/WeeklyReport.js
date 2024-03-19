@@ -76,8 +76,8 @@ const WeeklyReport = () => {
                     </div>
                     <div className="modal-body">
                         <div className='mb-2'>
-                            <div className="d-flex col justify-content-center ">
-                                <h6 className="fw-bold text-nowrap pt-2 pr-2"> Start Date</h6>
+                            <div className="d-flex col justify-content-center mb-2 ">
+                                <h6 className="fw-bold text-nowrap pt-2 pr-2">Start Date</h6>
                                 <Datetime
                                     value={startDatevalue}
                                     onChange={handleStartDatevalue}
@@ -86,7 +86,7 @@ const WeeklyReport = () => {
                                 />
                             </div>
                             <div className="d-flex col  justify-content-center">
-                                <h6 className="fw-bold text-nowrap pt-2 pr-2"> End Date</h6>
+                                <h6 className="fw-bold text-nowrap pt-2 pr-2">End Date&nbsp;&nbsp;</h6>
                                 <Datetime
                                     value={endDatevalue}
                                     onChange={handleEndDatevalue}
