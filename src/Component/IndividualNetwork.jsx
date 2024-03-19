@@ -121,7 +121,8 @@ const IndividualNetwork = () => {
                             Wallet:&nbsp;{user.wallet}&nbsp;
                           </p>
                           <p class="text-secondary mb-1 text-capitalize">
-                            Introducer Username:&nbsp;{user.introducersUserName}
+                            Introducer Username:&nbsp;
+                            {user.matchedIntroducersUserName}
                             &nbsp;
                           </p>
                           <p class="text-secondary mb-1 text-capitalize">

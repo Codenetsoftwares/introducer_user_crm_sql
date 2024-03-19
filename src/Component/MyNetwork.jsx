@@ -10,7 +10,7 @@ const MyNetwork = () => {
 
   useEffect(() => {
     // Fetch data from the server
-    AccountsService.getIntroducerUser(auth.user.id, auth.user)
+    AccountsService.getIntroducerUser(auth.user.intro_id, auth.user)
       .then((res) => {
         console.log(res.data);
         setNetwork(res.data);
@@ -52,7 +52,7 @@ const MyNetwork = () => {
                 <th scope="row">{i + 1}</th>
                 <td>{userDetails.userName}</td>
                 <td>
-                  <Link to={`/individualNetwork/${userDetails._id}`}>
+                  <Link to={`/individualNetwork/${userDetails.user_id}`}>
                     Details
                   </Link>
                 </td>
