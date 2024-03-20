@@ -14,11 +14,23 @@ import IndividualNetwork from "./Component/IndividualNetwork";
 import Statement from "./Component/Statement";
 import PasswordReset from "./Component/PasswordReset";
 import WeeklyReport from "./Component/Modal/WeeklyReport";
-
+import { ToastContainer } from "react-toastify";
 
 function App() {
   return (
     <React.Fragment>
+      <ToastContainer
+        position="top-right"
+        autoClose={3000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+        pauseOnHover
+        theme="dark"
+      />
       <AuthProvider>
         <BrowserRouter>
           <Routes>
@@ -81,7 +93,7 @@ function App() {
               path="weekly"
               element={
                 <RequireAuth>
-                  <WeeklyReport/>
+                  <WeeklyReport />
                 </RequireAuth>
               }
             />

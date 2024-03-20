@@ -12,7 +12,7 @@ import ModalBankView from "./ModalBankView";
 import "./Profile.css";
 import Editicon from "../Assets/Editpas.png";
 import WeeklyReport from "./Modal/WeeklyReport";
-
+import { toast } from "react-toastify";
 const Profile = () => {
   const auth = useAuth();
   const navigate = useNavigate();
@@ -25,9 +25,11 @@ const Profile = () => {
   const [balance, setBalance] = useState([]);
 
   const handleLogout = () => {
-    const response = true;
+    const response = window.confirm(
+      "Are you sure that you want to Logout from this site ?"
+    );
     if (response) {
-      alert("You are going to Logout from this site");
+      toast.success("Logout Successfully");
       auth.logout();
       navigate("/");
     }
