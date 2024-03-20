@@ -37,12 +37,12 @@ const Login = () => {
           console.log(auth);
           auth.login();
           navigate("/welcome");
-          alert("Logged In");
+          toast.success("Login Successfully");
         }
       })
       .catch((err) => {
-        console.log(err)
-        alert(err.response.data.message)
+        console.log(err);
+        toast.error(err.response.data.message);
       });
   };
   // const handleSubmit = (e) => {
@@ -209,8 +209,9 @@ const Login = () => {
             </li> */}
             <li className="nav-item text-center" style={{ width: "33%" }}>
               <a
-                className={`nav-link ${activeTab === 3 ? "active" : ""
-                  } text-black fw-bold`}
+                className={`nav-link ${
+                  activeTab === 3 ? "active" : ""
+                } text-black fw-bold`}
                 data-toggle="tab"
                 aria-selected={activeTab === 3}
                 onClick={() => handleClick(3)}
