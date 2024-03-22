@@ -38,6 +38,8 @@ const WeeklyReport = () => {
   const handleFilter = () => {
     const sdate = moment(startDatevalue).toDate();
     const edate = moment(endDatevalue).toDate();
+    console.log("sdate", sdate);
+    console.log("edate", edate);
     sdate.setHours(0, 0, 0);
     edate.setHours(23, 59, 59);
     console.log("==>", sdate, "===>", edate);
@@ -57,21 +59,21 @@ const WeeklyReport = () => {
   };
   console.log(documentView);
 
-//   const flattenedData = documentView.map((transaction) => ({
-//     Date: transaction.createdAt,
-//     AccountNumber: transaction.accountNumber,
-//     BankName: transaction.bankName,
-//     WebsiteName: transaction.websiteName,
-//     Amount: transaction.amount,
-//     PaymentMethod: transaction.paymentMethod,
-//     TransactionID: transaction.transactionID,
-//     TransactionType: transaction.transactionType,
-//     Introducer: transaction.introducerUserName,
-//     SubAdminName: transaction.subAdminName,
-//     UserName: transaction.userName,
-//     Remarks: transaction.remarks,
-//   }));
-//   console.log("flattenedData", flattenedData);
+  //   const flattenedData = documentView.map((transaction) => ({
+  //     Date: transaction.createdAt,
+  //     AccountNumber: transaction.accountNumber,
+  //     BankName: transaction.bankName,
+  //     WebsiteName: transaction.websiteName,
+  //     Amount: transaction.amount,
+  //     PaymentMethod: transaction.paymentMethod,
+  //     TransactionID: transaction.transactionID,
+  //     TransactionType: transaction.transactionType,
+  //     Introducer: transaction.introducerUserName,
+  //     SubAdminName: transaction.subAdminName,
+  //     UserName: transaction.userName,
+  //     Remarks: transaction.remarks,
+  //   }));
+  //   console.log("flattenedData", flattenedData);
 
   return (
     <div
@@ -120,15 +122,9 @@ const WeeklyReport = () => {
               </div>
             </div>
 
-            <div className="d-flex col justify-content-center">
+            {/* <div className="d-flex col justify-content-center">
               <div className="mx-2">
-                <button
-                  type="button"
-                  className="btn btn-dark"
-                  onClick={handleReset}
-                >
-                  Reset
-                </button>
+               
               </div>
               <div className="mx-2">
                 {documentView && (
@@ -137,7 +133,7 @@ const WeeklyReport = () => {
                   </CSVLink>
                 )}
               </div>
-            </div>
+            </div> */}
           </div>
 
           <div className="modal-footer">
@@ -148,6 +144,13 @@ const WeeklyReport = () => {
               onClick={handleReset}
             >
               Close
+            </button>
+            <button
+              type="button"
+              className="btn btn-danger"
+              onClick={handleReset}
+            >
+              Reset
             </button>
             {toggle ? (
               <div className="mx-2">
