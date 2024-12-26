@@ -10,7 +10,7 @@ import { CSVLink } from "react-csv";
 
 const Statement = () => {
   const auth = useAuth();
-  const id = auth.user.intro_id;
+  const id = auth?.user.introId;
   const [toggle, setToggle] = useState(true);
   const [documentView, setDocumentView] = useState([]);
   const [documentFilter, setDocumentFilter] = useState([]);
@@ -44,7 +44,7 @@ const Statement = () => {
 
   useEffect(() => {
     TransactionService.getIntroducerSingleUser(id, auth.user).then(
-      (res) => (setDocumentView(res.data), setAccountData(res.data))
+      (res) => (setDocumentView(res.data.data), setAccountData(res.data.data))
     );
   }, [auth, id]);
 

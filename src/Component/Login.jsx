@@ -33,7 +33,7 @@ const Login = () => {
       .then((res) => {
         console.log(res);
         if (res.status === 200) {
-          localStorage.setItem("user", res.data.token.accessToken);
+          localStorage.setItem("user", res.data.data.accessToken);
           console.log(auth);
           auth.login();
           navigate("/welcome");
@@ -42,7 +42,7 @@ const Login = () => {
       })
       .catch((err) => {
         console.log(err);
-        toast.error(err.response.data.message);
+        // toast.error(err.response.data.message);
       });
   };
   // const handleSubmit = (e) => {

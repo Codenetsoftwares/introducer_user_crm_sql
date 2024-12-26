@@ -17,7 +17,6 @@ const Profile = () => {
   const auth = useAuth();
   const navigate = useNavigate();
   const id = auth.user.intro_id;
-  console.log("This is Auth=>", auth);
   const [userAuth, setUserAuth] = useState([]);
   const [profiledata, setProfiledata] = useState([]);
   const [FoundObject, setFoundObject] = useState([]);
@@ -35,36 +34,31 @@ const Profile = () => {
     }
   };
 
+  console.log("firstname", profiledata);
+
   useEffect(() => {
     AccountsService.getprofile(auth.user).then((res) =>
-      setProfiledata(res.data)
+      setProfiledata(res?.data.data)
     );
-  }, [auth, id]);
-  console.log("This is Profile Data =>>>", profiledata);
+  }, [auth, auth?.user.introId]);
 
   useEffect(() => {
-    AccountsService.liveBalance(id, auth.user).then((res) =>
-      setBalance(res.data)
+    AccountsService.liveBalance(auth?.user?.introId, auth?.user).then((res) =>
+      setBalance(res.data.data)
     );
+  }, [auth, auth?.user.introId]);
+
+  useEffect(() => {
+    AccountsService.getprofile(auth.user)
+      .then((res) => {
+        setProfiledata(res?.data.data);
+        console.log("========", res);
+      })
+      .catch((error) => {
+        // Handle error
+        console.error("Error fetching user data:", error);
+      });
   }, [auth, id]);
-  console.log("This is Live Balance=>>>", balance);
-
-  // useEffect(() => {
-  //   AccountsService.getprofile(auth.user)
-  //     .then((res) => {
-  //       setProfiledata(res.data);
-
-  //       const userWithId = res.data.find((user) => user._id === id);
-
-  //       setFoundObject(userWithId);
-  //     })
-  //     .catch((error) => {
-  //       // Handle error
-  //       console.error("Error fetching user data:", error);
-  //     });
-  // }, [auth, id]);
-
-  // console.log("This is profile data ==>>>", profiledata);
 
   const handeleditprofile = () => {
     navigate(`/editprofile/${profiledata.intro_id}`);
@@ -144,7 +138,7 @@ const Profile = () => {
                     style={{ width: "150px" }}
                   />
                   <h5 className="my-3 pt-3">
-                    Hi!&nbsp;{profiledata.firstname}
+                    Hi!&nbsp;{profiledata.firstName}
                   </h5>
                   {/* <marquee className="news-content"> */}
                   <p className="text-muted">
@@ -202,8 +196,8 @@ const Profile = () => {
                 <div className="card-body">
                   <p>
                     <h6>
-                      Name:&nbsp;{profiledata.firstname}&nbsp;
-                      {profiledata.lastname}{" "}
+                      Name:&nbsp;{profiledata.firstName}&nbsp;
+                      {profiledata.lastName}{" "}
                     </h6>
                     <br />
                     <h6>Username: &nbsp;{profiledata.userName}</h6>

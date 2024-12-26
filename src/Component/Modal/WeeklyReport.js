@@ -19,8 +19,8 @@ const WeeklyReport = () => {
       .then(
         (res) => (
           console.log("first===>", res),
-          setDocumentView(res.data),
-          setAccountView(res.data)
+          setDocumentView(res.data.data),
+          setAccountView(res.data.data)
         )
       )
       .catch((err) => setDocumentView([]));
@@ -55,7 +55,6 @@ const WeeklyReport = () => {
     setDocumentView(accountView);
     setToggle(true);
   };
-  console.log(documentView);
 
 //   const flattenedData = documentView.map((transaction) => ({
 //     Date: transaction.createdAt,

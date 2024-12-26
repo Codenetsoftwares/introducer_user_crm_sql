@@ -7,13 +7,12 @@ const MyNetwork = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const [network, setNetwork] = useState([]);
   const auth = useAuth();
-
   useEffect(() => {
     // Fetch data from the server
-    AccountsService.getIntroducerUser(auth.user.intro_id, auth.user)
+    AccountsService.getIntroducerUser(auth?.user.introId, auth.user)
       .then((res) => {
         console.log(res.data);
-        setNetwork(res.data);
+        setNetwork(res.data.data);
       })
       .catch((error) => {
         console.error("Error fetching network data:", error);
@@ -52,7 +51,7 @@ const MyNetwork = () => {
                 <th scope="row">{i + 1}</th>
                 <td>{userDetails.userName}</td>
                 <td>
-                  <Link to={`/individualNetwork/${userDetails.user_id}`}>
+                  <Link to={`/individualNetwork/${userDetails.userId}`}>
                     Details
                   </Link>
                 </td>

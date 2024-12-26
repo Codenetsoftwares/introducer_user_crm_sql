@@ -35,9 +35,9 @@ const IndividualNetwork = () => {
   useEffect(() => {
     AccountsService.getIntroducerSingleUser(id, auth.user).then((res) => {
       console.log(res.data);
-      setSingleData(res.data);
-      setDocumentView(res.data.transactionDetail);
-      setAccountData(res.data.transactionDetail);
+      setSingleData(res.data.data);
+      setDocumentView(res.data.data.transactionDetail);
+      setAccountData(res.data.data.transactionDetail);
     });
   }, [auth.user, id]);
 

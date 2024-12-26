@@ -59,7 +59,7 @@ class AccountsService {
   getprofile(user) {
     return axios({
       method: "get",
-      url: `${API_HOST}/api/intoducer/profile`,
+      url: `${API_HOST}/api/introducer/profile`,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
@@ -97,6 +97,7 @@ class AccountsService {
   }
 
   liveBalance(id, user) {
+    console.log("tttttttt",id)
     return axios({
       method: "get",
       url: `${API_HOST}/api/introducer/introducer-live-balance/${id}`,
