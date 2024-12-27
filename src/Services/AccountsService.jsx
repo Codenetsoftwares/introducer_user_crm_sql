@@ -86,10 +86,10 @@ class AccountsService {
     });
   }
 
-  getIntroducerSingleUser(id, user) {
+  getIntroducerSingleUser(user, id, page, pageLimit, type, startDate, endDate) {
     return axios({
       method: "get",
-      url: `${API_HOST}/api/introducer-user-single-data/${id}`,
+      url: `${API_HOST}/api/introducer-user-single-data/${id}?page=${page}&pageSize=${pageLimit}&type=${type}&startDate=${startDate}&endDate=${endDate}`,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
@@ -97,7 +97,7 @@ class AccountsService {
   }
 
   liveBalance(id, user) {
-    console.log("tttttttt",id)
+    console.log("tttttttt", id);
     return axios({
       method: "get",
       url: `${API_HOST}/api/introducer/introducer-live-balance/${id}`,

@@ -7,59 +7,57 @@ import "react-datetime/css/react-datetime.css";
 import moment from "moment";
 import TransactionService from "../Services/TransactionService";
 import { CSVLink } from "react-csv";
+import Pagination from "./Pagination";
 
 const Statement = () => {
   const auth = useAuth();
   const id = auth?.user.introId;
-  const [toggle, setToggle] = useState(true);
   const [documentView, setDocumentView] = useState([]);
-  const [documentFilter, setDocumentFilter] = useState([]);
-  const [startDatevalue, SetStartDatesetValue] = useState(new Date());
+  const [startDatevalue, SetStartDatesetValue] = useState(
+    moment().subtract(1, "days").toDate()
+  );
   const [endDatevalue, setEndDateValue] = useState(new Date());
-  const [select, setSelect] = useState("All");
-  const [accountData, setAccountData] = useState([]);
+  const [select, setSelect] = useState("");
+  const [page, setPage] = useState(1);
+  const [totalData, setTotalData] = useState(0);
+  const [totalPage, setTotalPage] = useState(0);
+  const pageLimit = 10;
 
-  // const [FoundObject, setFoundObject] = useState([]);
+  console.log("select", select);
 
-  const test = [
-    "transactionType",
-    "subAdminName",
-    "websiteName",
-    "bankName",
-    "introducerUserName",
-  ];
-  const handleClick = (key, value) => {
-    let nArr = [...documentView];
-    if (test.includes(key)) {
-      nArr = nArr.filter((item) => item[key] === value);
-    }
-    setDocumentView(nArr);
+  const selectPageHandler = (selectedPage) => {
+    console.log(selectedPage);
+    setPage(selectedPage);
   };
 
-  const handleChange = (e) => {
-    const value = e.target.value;
-    setSelect(value);
-    handleClick("transactionType", value);
-  };
+  const startIndex = Math.min((page - 1) * pageLimit + 1);
+  const endIndex = Math.min(page * pageLimit, totalData);
 
   useEffect(() => {
-    TransactionService.getIntroducerSingleUser(id, auth.user).then(
-      (res) => (setDocumentView(res.data.data), setAccountData(res.data.data))
+    const formattedStartDate = moment(
+      startDatevalue,
+      "DD-MM-YYYY HH:mm"
+    ).format("YYYY-MM-DD");
+    const formattedEndDate = moment(endDatevalue, "DD-MM-YYYY HH:mm").format(
+      "YYYY-MM-DD"
     );
-  }, [auth, id]);
 
-  console.log(documentView);
-
-  const handelDate = () => {
-    const sdate = moment(startDatevalue, "DD-MM-YYYY HH:mm").toDate();
-    const edate = moment(endDatevalue, "DD-MM-YYYY HH:mm").toDate();
-    const filteredDocuments = documentView.filter((data) => {
-      const transactionDate = new Date(data.createdAt);
-      return transactionDate >= sdate && transactionDate <= edate;
-    });
-    setDocumentFilter(filteredDocuments);
-    setToggle(false);
-  };
+    TransactionService.getIntroducerSingleUser(
+      auth.user,
+      id,
+      page,
+      pageLimit,
+      select,
+      formattedStartDate,
+      formattedEndDate
+    ).then(
+      (res) => (
+        setDocumentView(res?.data?.data),
+        setTotalData(res?.data?.pagination?.totalItems),
+        setTotalPage(res?.data?.pagination?.totalPages)
+      )
+    );
+  }, [auth, id, page, startDatevalue, endDatevalue, select]);
 
   const handleStartDatevalue = (e) => {
     SetStartDatesetValue(moment(e).format("DD-MM-YYYY HH:mm"));
@@ -70,10 +68,8 @@ const Statement = () => {
   };
 
   const handleReset = () => {
-    setToggle(true);
-    SetStartDatesetValue("");
-    setEndDateValue("");
-    setDocumentView(accountData);
+    SetStartDatesetValue(moment().subtract(1, "days").toDate());
+    setEndDateValue(new Date());
     setSelect("All");
   };
 
@@ -91,9 +87,6 @@ const Statement = () => {
               <b>Your Transactions</b>
             </Link>
           </li>
-          {/* <li className="breadcrumb-item active" aria-current="page">
-                    Log Out
-                  </li> */}
         </ul>
       </nav>
       <div className="d-flex  pt-3 justify-content-center">
@@ -102,14 +95,14 @@ const Statement = () => {
           className="form-control mx-3 w-25"
           value={select || ""}
           autoComplete="off"
-          onChange={handleChange}
           style={{
             // boxShadow: " 17px 15px 27px -9px rgba(0,0,0,0.41)",
             border: "0.5px solid black",
             borderRadius: "6px",
           }}
+          onChange={(e) => setSelect(e.target.value)}
         >
-          <option className="d-flex" value="All">
+          <option className="d-flex" value="">
             <b>All</b>
           </option>
           <option className="d-flex" value="Deposit">
@@ -141,16 +134,7 @@ const Statement = () => {
         </div>
       </div>
       <div className="d-flex pt-3 justify-content-center mb-2">
-        <div className="mx-2">
-          <button
-            type="button"
-            className="btn btn-dark"
-            style={{ boxShadow: "17px 15px 27px -9px rgba(0, 0, 0, 0.41)" }}
-            onClick={handelDate}
-          >
-            Filter
-          </button>
-        </div>
+        <div className="mx-2"></div>
         <div className="mx-2">
           <button
             type="button"
@@ -161,19 +145,11 @@ const Statement = () => {
             Reset
           </button>
         </div>
-        {toggle ? (
-          <div className="mx-2">
-            <CSVLink data={documentView} className="btn btn-success">
-              Download Data
-            </CSVLink>
-          </div>
-        ) : (
-          <div className="mx-2">
-            <CSVLink data={documentFilter} className="btn btn-success">
-              Download Filter Data
-            </CSVLink>
-          </div>
-        )}
+        <div className="mx-2">
+          <CSVLink data={documentView} className="btn btn-success">
+            Download Data
+          </CSVLink>
+        </div>
       </div>
 
       <div className=" container mt-5">
@@ -186,156 +162,79 @@ const Statement = () => {
               "linear-gradient(90deg, rgba(60,251,165,1) 0%, rgba(171,246,241,1) 50%, rgba(60,251,165,1) 100%)",
           }}
         ></div>
-        {toggle ? (
-          <small className="d-flex justify-content-center">
-            {/* Normal View */}
-            <table class="table table-bordered  table-sm table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl w-auto ">
-              {/* This is for Deposit Card Normal View */}
-              {/* <div
-            className="card  rounded-2 mb-2"
-            style={{
-              boxShadow: "26px -13px 32px -15px rgba(29,29,31,0.68)",
-              backgroundImage:
-                "linear-gradient(90deg, rgba(60,251,165,1) 0%, rgba(171,246,241,1) 50%, rgba(60,251,165,1) 100%)",
-            }}
-          > */}
-              <thead className="table-success">
-                <tr align="center" bgcolor="green" className="fs-6">
-                  <th scope="col fs-6" className="text-primary">
-                    Date & Time
-                  </th>
-                  <th scope="col text-break fs-6" className="text-primary">
-                    Amount
-                  </th>
-                  {/* <th scope="col text-break fs-6" className="text-primary">
+        <small className="d-flex justify-content-center">
+          {/* Normal View */}
+          <table class="table table-bordered  table-sm table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl w-auto ">
+            <thead className="table-success">
+              <tr align="center" bgcolor="green" className="fs-6">
+                <th scope="col fs-6" className="text-primary">
+                  Date & Time
+                </th>
+                <th scope="col text-break fs-6" className="text-primary">
+                  Amount
+                </th>
+                {/* <th scope="col text-break fs-6" className="text-primary">
                                 Txn Id
                             </th> */}
-                  <th scope="col text-break fs-6" className="text-primary">
-                    Txn Type
-                  </th>
+                <th scope="col text-break fs-6" className="text-primary">
+                  Txn Type
+                </th>
 
-                  <th scope="col text-break" className="text-primary">
-                    Remarks
-                  </th>
-                </tr>
-              </thead>
-              {/* </div> */}
-              <tbody>
-                {documentView.length > 0 ? (
-                  documentView.map((data, i) => {
-                    return (
-                      <tr align="center" className="fs-6">
-                        <td>
-                          {" "}
-                          {new Date(data.createdAt).toLocaleString(
-                            "default"
-                          )}{" "}
-                        </td>
-                        <td>
-                          {data.amount && (
-                            <p className="col fs-6">{data.amount}</p>
-                          )}
-                          {data.depositAmount && (
-                            <p className="col fs-6">{data.depositAmount}</p>
-                          )}
-                          {data.withdrawAmount && (
-                            <p className="col fs-6">{data.withdrawAmount}</p>
-                          )}
-                        </td>
+                <th scope="col text-break" className="text-primary">
+                  Remarks
+                </th>
+              </tr>
+            </thead>
+            {/* </div> */}
+            <tbody>
+              {documentView.length > 0 ? (
+                documentView.map((data, i) => {
+                  return (
+                    <tr align="center" className="fs-6">
+                      <td>
+                        {" "}
+                        {new Date(data?.createdAt).toLocaleString(
+                          "default"
+                        )}{" "}
+                      </td>
+                      <td>
+                        {data?.amount && (
+                          <p className="col fs-6">{data?.amount}</p>
+                        )}
+                        {data?.depositAmount && (
+                          <p className="col fs-6">{data?.depositAmount}</p>
+                        )}
+                        {data?.withdrawAmount && (
+                          <p className="col fs-6">{data?.withdrawAmount}</p>
+                        )}
+                      </td>
 
-                        <td>
-                          {data.transactionType && (
-                            <p className="col fs-6 text-break">
-                              {data.transactionType}
-                            </p>
-                          )}
-                        </td>
+                      <td>
+                        {data?.transactionType && (
+                          <p className="col fs-6 text-break">
+                            {data?.transactionType}
+                          </p>
+                        )}
+                      </td>
 
-                        <td>{data.remarks}</td>
-                      </tr>
-                    );
-                  })
-                ) : (
-                  <h1 className="text-center">No Transaction Found</h1>
-                )}
-              </tbody>
-            </table>
-          </small>
-        ) : (
-          <small className="d-flex justify-content-center">
-            <table class="table table-bordered  table-sm table-responsive-sm table-responsive-md table-responsive-lg table-responsive-xl w-auto ">
-              {/* This is for Deposit Card Normal View */}
-              {/* <div
-            className="card  rounded-2 mb-2"
-            style={{
-              boxShadow: "26px -13px 32px -15px rgba(29,29,31,0.68)",
-              backgroundImage:
-                "linear-gradient(90deg, rgba(60,251,165,1) 0%, rgba(171,246,241,1) 50%, rgba(60,251,165,1) 100%)",
-            }}
-          > */}
-              <thead className="table-success">
-                <tr align="center" bgcolor="green" className="fs-6">
-                  <th scope="col fs-6" className="text-primary">
-                    Date & Time
-                  </th>
-                  <th scope="col text-break fs-6" className="text-primary">
-                    Amount
-                  </th>
-                  {/* <th scope="col text-break fs-6" className="text-primary">
-                                Txn Id
-                            </th> */}
-                  <th scope="col text-break fs-6" className="text-primary">
-                    Txn Type
-                  </th>
-
-                  <th scope="col text-break" className="text-primary">
-                    Remarks
-                  </th>
-                </tr>
-              </thead>
-              {/* </div> */}
-              <tbody>
-                {documentFilter.length > 0 ? (
-                  documentFilter.map((data, i) => {
-                    return (
-                      <tr align="center" className="fs-6">
-                        <td>
-                          {" "}
-                          {new Date(data.createdAt).toLocaleString(
-                            "default"
-                          )}{" "}
-                        </td>
-                        <td>
-                          {data.amount && (
-                            <p className="col fs-6">{data.amount}</p>
-                          )}
-                          {data.depositAmount && (
-                            <p className="col fs-6">{data.depositAmount}</p>
-                          )}
-                          {data.withdrawAmount && (
-                            <p className="col fs-6">{data.withdrawAmount}</p>
-                          )}
-                        </td>
-
-                        <td>
-                          {data.transactionType && (
-                            <p className="col fs-6 text-break">
-                              {data.transactionType}
-                            </p>
-                          )}
-                        </td>
-
-                        <td>{data.remarks}</td>
-                      </tr>
-                    );
-                  })
-                ) : (
-                  <h1 className="text-center">No Transaction Found</h1>
-                )}
-              </tbody>
-            </table>
-          </small>
-        )}
+                      <td>{data?.remarks}</td>
+                    </tr>
+                  );
+                })
+              ) : (
+                <h1 className="text-center">No Transaction Found</h1>
+              )}
+            </tbody>
+          </table>
+        </small>
+            <Pagination
+              currentPage={page}
+              totalPages={totalPage}
+              handlePageChange={selectPageHandler}
+              startIndex={startIndex}
+              endIndex={endIndex}
+              totalData={totalData}
+            />
       </div>
     </div>
   );

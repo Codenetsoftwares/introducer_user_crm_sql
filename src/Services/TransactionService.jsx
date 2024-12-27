@@ -3,10 +3,10 @@ const API_HOST = process.env.REACT_APP_API_HOST;
 console.log(API_HOST);
 
 class TransactionService {
-  getIntroducerSingleUser(id, user) {
+  getIntroducerSingleUser(user, id, page, pageLimit, type, startDate, endDate) {
     return axios({
       method: "get",
-      url: `${API_HOST}/api/introducer-account-summary/${id}`,
+      url: `${API_HOST}/api/introducer-account-summary/${id}?page=${page}&pageSize=${pageLimit}&type=${type}&startDate=${startDate}&endDate=${endDate}`,
       headers: {
         Authorization: `Bearer ${user.token}`,
       },
@@ -14,7 +14,7 @@ class TransactionService {
   }
 
   getIntroducerUserData(id, user) {
-    console.log(id)
+    console.log(id);
     return axios({
       method: "get",
       url: `${API_HOST}/api/introducer-user/accountsummary/${id}`,
@@ -23,6 +23,5 @@ class TransactionService {
       },
     });
   }
-
 }
 export default new TransactionService();
